@@ -143,7 +143,6 @@ function Classes() {
 
             <AddPopup isOpen={isAddPopupOpen} onClose={closePopup} ></AddPopup>
             <EditPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass}></EditPopup>
-
         </section>
     );
 }

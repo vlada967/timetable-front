@@ -22,8 +22,14 @@ function App() {
   const [teachers, setTeachers] = React.useState([]);
   const [slots, setSlots] = React.useState([]);
   const [theClass, setTheClass] = React.useState({});
+  const [theClassId, setTheClassId] = React.useState();
   const [theGroup, setTheGroup] = React.useState({});
+  const [theGroupId, setTheGroupId] = React.useState();
   const [theTeacher, setTheTeacher] = React.useState({});
+  const [theTeacherId, setTheTeacherId] = React.useState();
+  const [teacherName, setTeacherName] = React.useState();
+  const [groupName, setGroupName] = React.useState();
+  const [className, setClassName] = React.useState();
   const history = useHistory();
 
   useEffect(() => {
@@ -35,21 +41,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (theClass.id) {
-      console.log('CLASS', theClass)
-      history.push(`/classes/${theClass.id}`);
+    if (theClass.length === 7) {
+      history.push(`/classes/${theClassId}`);
     }
   }, [theClass]);
 
   useEffect(() => {
-    if (theGroup.id) {
-      history.push(`/groups/${theGroup.id}`);
+    if (theGroup.length === 7) {
+      history.push(`/groups/${theGroupId}`);
     }
   }, [theGroup]);
 
   useEffect(() => {
-    if (theTeacher.id) {
-      history.push(`/teachers/${theTeacher.id}`);
+    if (theTeacher.length === 7) {
+      history.push(`/teachers/${theTeacherId}`);
     }
   }, [theTeacher]);
 
@@ -77,9 +82,15 @@ function App() {
   }
 
   function handleClassClick(e) {
-    classes.forEach(c => {
-      if (c.id.toString() === e.target.id) {
-        setTheClass(c);
+    classes.forEach(g => {
+      if (g.id.toString() === e.target.id) {
+        setClassName(g.name);
+        api.getTheClass(e.target.id)
+          .then((data) => {
+            setTheClassId(e.target.id);
+            setTheClass(data);
+          })
+          .catch(err => console.log(err))
       }
     });
   }
@@ -87,8 +98,13 @@ function App() {
   function handleGroupClick(e) {
     groups.forEach(g => {
       if (g.id.toString() === e.target.id) {
-        console.log('THE GROUP', g)
-        setTheGroup(g);
+        setGroupName(g.name);
+        api.getGroup(e.target.id)
+          .then((data) => {
+            setTheGroupId(e.target.id);
+            setTheGroup(data);
+          })
+          .catch(err => console.log(err))
       }
     });
   }
@@ -96,8 +112,13 @@ function App() {
   function handleTeacherClick(e) {
     teachers.forEach(g => {
       if (g.id.toString() === e.target.id) {
-        console.log('THE TEACHER', g)
-        setTheTeacher(g);
+        setTeacherName(g.name);
+        api.getTeacher(e.target.id)
+          .then((data) => {
+            setTheTeacherId(e.target.id);
+            setTheTeacher(data);
+          })
+          .catch(err => console.log(err))
       }
     });
   }
@@ -153,15 +174,15 @@ function App() {
         <Route path="/view">
           <View />
         </Route>
-        <Class path="/classes/:id" theClass={theClass}></Class>
+        <Class path="/classes/:id" theClass={theClass} className={className}></Class>
         <Route exact path="/classes">
           <ViewClasses classes={classes} onClick={handleClassClick} />
         </Route>
-        <Group path="/groups/:id" theGroup={theGroup} ></Group>
+        <Group path="/groups/:id" theGroup={theGroup} groupName={groupName}></Group>
         <Route exact path="/groups">
           <ViewGroupes groups={groups} onClick={handleGroupClick} />
         </Route>
-        <Teacher path="/teachers/:id" theTeacher={theTeacher} ></Teacher>
+        <Teacher path="/teachers/:id" theTeacher={theTeacher} teacherName={teacherName} ></Teacher>
         <Route exact path="/teachers">
           <ViewTeachers teachers={teachers} onClick={handleTeacherClick} />
         </Route>

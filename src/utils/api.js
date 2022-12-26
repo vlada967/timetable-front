@@ -31,8 +31,41 @@ export const getGroups = () => {
         .then((response) => _checkResponse(response))
 };
 
+export const getGroup = (id) => {
+    return fetch(`${BASE_URL}/table/group/${id}`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => _checkResponse(response))
+};
+
 export const getTeachers = () => {
     return fetch(`${BASE_URL}/teachers`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const getTeacher = (id) => {
+    return fetch(`${BASE_URL}/table/teacher/${id}`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const getTheClass = (id) => {
+    return fetch(`${BASE_URL}/table/room/${id}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${token()}`,
