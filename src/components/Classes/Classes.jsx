@@ -5,25 +5,10 @@ import trashPath from '../../images/trash.svg';
 import AddPopup from '../AddPopup/AddPopup';
 import EditPopup from '../EditPopup/EditPopup';
 
-function Classes() {
+function Classes({ classes, slots }) {
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState(false);
     const [isEditPopupOpen, setIsEditPopupOpen] = React.useState(false);
-    const [classes, setClasses] = React.useState([]);
-    const [slots, setSlots] = React.useState([]);
     const [theClass, setTheClass] = React.useState([]);
-
-    useEffect(() => {
-        getClasses();
-        getSlots();
-    }, []);
-
-    function getClasses() {
-        return api.getClasses()
-            .then((data) => {
-                setClasses(data);
-            })
-            .catch(err => console.log(err));
-    }
 
     function getDay(id) {
         switch (id) {
@@ -61,14 +46,6 @@ function Classes() {
             case 1200:
                 return "20:00";
         }
-    }
-
-    function getSlots() {
-        return api.getSlots()
-            .then((data) => {
-                setSlots(data);
-            })
-            .catch(err => console.log(err));
     }
 
     function closePopup() {

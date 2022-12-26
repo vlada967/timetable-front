@@ -4,7 +4,7 @@ import Groupes from '../Groupes/Groupes';
 // import Teachers from '../Teachers/Teachers';
 // import Students from '../Students/Students';
 
-function Edit() {
+function Edit({ classes, slots }) {
     return (
         <div className="edit">
             <section className="edit__nav">
@@ -17,7 +17,7 @@ function Edit() {
 
             <Switch>
                 <Route path="/edit/classes">
-                    <Classes />
+                    <Classes classes={classes} slots={slots} />
                 </Route>
                 <Route path="/edit/groupes">
                     <Groupes />

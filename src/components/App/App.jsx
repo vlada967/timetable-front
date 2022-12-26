@@ -162,6 +162,8 @@ function App() {
         <ProtectedRoute
           path="/edit"
           loggedIn={loggedIn}
+          classes={classes}
+          slots={slots}
           component={Edit}
         />
 
