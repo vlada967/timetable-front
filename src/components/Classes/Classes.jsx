@@ -118,8 +118,8 @@ function Classes({ classes, slots }) {
                 </table>
             </div>
 
-            <AddPopup isOpen={isAddPopupOpen} onClose={closePopup} ></AddPopup>
-            <EditPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass}></EditPopup>
+            <AddPopup isOpen={isAddPopupOpen} onClose={closePopup} slots={slots}></AddPopup>
+            <EditPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass} slots={slots}></EditPopup>
         </section>
     );
 }

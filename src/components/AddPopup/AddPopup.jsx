@@ -6,11 +6,7 @@ function AddPopup({ isOpen, onClose, onAddPlace }) {
     const [name, setName] = React.useState('');
     const [capacity, setCapacity] = React.useState('');
     const [tools, setTools] = React.useState(false);
-    const [slots, setSlots] = React.useState([]);
-
-    for (let i = 0; i < 49; i++) {
-        slots[i] = false;
-    }
+    let slots = [];
 
     function handleNameChange(e) {
         setName(e.target.value);
@@ -24,15 +20,25 @@ function AddPopup({ isOpen, onClose, onAddPlace }) {
         setTools(e.target.checked);
     }
 
+    function arrayRemove(arr, value) {
+        return arr.filter(function (el) {
+            return el != value;
+        });
+    }
+
     function handleSlotsChange(e) {
-        slots[e.target.id] = !slots[e.target.id];
+        const id = parseInt(e.target.id, 10) + 1;
+        if (slots.includes(id)) {
+            slots = arrayRemove(slots, id);
+        } else {
+            slots.push(id);
+        }
     }
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log(name, capacity, tools, slots)
-        const test_slots = [0];
-        api.addClass(name, capacity, tools, test_slots)
+        api.addClass(name, capacity, tools, slots)
             .then((data) => {
                 console.log(data)
             })
@@ -40,7 +46,7 @@ function AddPopup({ isOpen, onClose, onAddPlace }) {
         setName('');
         setCapacity('');
         setTools(false);
-        setSlots([]);
+        slots = [];
         e.target.closest('form').reset();
         onClose();
     }

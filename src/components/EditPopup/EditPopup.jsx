@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import * as api from '../../utils/api.js';
 
-function EditPopup({ isOpen, onClose, theClass }) {
+function EditPopup({ isOpen, onClose, theClass, slots }) {
+
+    console.log(slots)
+
     const [name, setName] = React.useState('');
     const [capacity, setCapacity] = React.useState('');
     const [tools, setTools] = React.useState(false);
-    const [slots, setSlots] = React.useState([]);
+    // const [slots, setSlots] = React.useState([]);
 
     useEffect(() => {
         setName(theClass.name);
@@ -15,9 +18,9 @@ function EditPopup({ isOpen, onClose, theClass }) {
         // setSlots(theClass.availableSlots);
     }, [isOpen]);
 
-    for (let i = 0; i < 49; i++) {
-        slots[i] = false;
-    }
+    // for (let i = 0; i < 49; i++) {
+    //     slots[i] = false;
+    // }
 
     function handleNameChange(e) {
         setName(e.target.value);
