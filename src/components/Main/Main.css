@@ -1,0 +1,23 @@
+.main {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.main__button {
+    margin-left: 30px;
+    font-size: 30px;
+    cursor: pointer;
+    width: 220px;
+    height: 70px;
+    margin-top: 40px;
+    justify-self: center;
+    align-self: center;
+    background-color: #fc88fc;
+    color: #ffffff;
+    border: 1px solid #969696;
+}
+
+.main__button:hover {
+    background-color: #fd69fd;
+}

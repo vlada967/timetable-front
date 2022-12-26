@@ -1,0 +1,16 @@
+.view-classes {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    margin: auto;
+}
+
+.view__link {
+    border: none;
+    background-color: #f7b0f7;
+    cursor: pointer;
+}
+
+.view__link:hover {
+    color: #361236;
+}

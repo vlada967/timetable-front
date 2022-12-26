@@ -1,0 +1,14 @@
+.header {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: start;
+    /* border-bottom: 1px solid #bebebe; */
+    border-bottom: 1px solid #1b1b1b;
+    padding-left: 50px;
+}
+
+.header__title {
+    font-size: 35px;
+    font-weight: 500;
+}

@@ -1,0 +1,19 @@
+.view {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.view__link {
+    font-size: 30px;
+    margin-top: 15px;
+    text-align: start;
+    color: #000000;
+    text-decoration: none;
+}
+
+.view__link:hover {
+    opacity: 70%;
+}
