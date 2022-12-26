@@ -37,7 +37,7 @@ function EditPopup({ isOpen, onClose, theClass }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const test_slots = [0];
+        const test_slots = [1];
         console.log('edit', theClass.id, name, capacity, tools, test_slots)
 
         api.editClass(theClass.id, name, capacity, tools, test_slots)

@@ -125,7 +125,7 @@ export const editClass = (id, name, capacity, tools, slots) => {
             name: name,
             capacity: capacity,
             tools: tools,
-            slots: slots
+            availableSlots: slots
         })
     })
         .then((response) => _checkResponse(response))
