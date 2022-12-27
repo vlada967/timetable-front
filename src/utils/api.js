@@ -108,6 +108,17 @@ export const getSlots = () => {
         .then((response) => _checkResponse(response))
 };
 
+export const getCourses = () => {
+    return fetch(`${BASE_URL}/courses`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => _checkResponse(response))
+};
+
 export const addClass = (name, capacity, tools, slots) => {
     return fetch(`${BASE_URL}/rooms`, {
         method: 'POST',

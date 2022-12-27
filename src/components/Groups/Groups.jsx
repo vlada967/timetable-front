@@ -5,7 +5,7 @@ import trashPath from '../../images/trash.svg';
 import AddPopup from '../AddPopup/AddPopup';
 import EditPopup from '../EditPopup/EditPopup';
 
-function Classes({ classes, slots }) {
+function Groups({ groups, courses, slots }) {
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState(false);
     const [isEditPopupOpen, setIsEditPopupOpen] = React.useState(false);
     const [theClass, setTheClass] = React.useState([]);
@@ -58,6 +58,17 @@ function Classes({ classes, slots }) {
         }
     }
 
+    function getCourse(id) {
+        switch (id) {
+            case 1:
+                return "OS ";
+            case 2:
+                return "Java ";
+            case 3:
+                return "PAC ";
+        }
+    }
+
     function closePopup() {
         setIsAddPopupOpen(false);
         setIsEditPopupOpen(false);
@@ -67,8 +78,8 @@ function Classes({ classes, slots }) {
         setIsAddPopupOpen(true);
     }
 
-    function handleEditClass(e) {
-        classes.forEach(c => {
+    function handleEditGroup(e) {
+        groups.forEach(c => {
             if (c.id.toString() === e.target.id) {
                 setTheClass(c);
                 available = c.availableSlots;
@@ -87,8 +98,8 @@ function Classes({ classes, slots }) {
         setIsEditPopupOpen(true);
     }
 
-    function handleDeleteClass(e) {
-        // api.deleteClass(e.target.id)
+    function handleDeleteGroup(e) {
+        // api.deleteGroup(e.target.id)
         //     .then(() => {
         //         setClasses((state) => state.filter(c => c.id !== e.target.id));
         //     })
@@ -100,7 +111,7 @@ function Classes({ classes, slots }) {
     return (
         <section className="classes">
             <div className="classes__cont">
-                <h2 className="classes__title">💖 Classes 💖</h2>
+                <h2 className="classes__title">💖 Groups 💖</h2>
                 <button type="button" onClick={() => handleAddClick()} className="classes__add">Add</button>
             </div>
 
@@ -109,17 +120,18 @@ function Classes({ classes, slots }) {
                     <tbody className="classes__table-body">
                         <tr className="classes__row">
                             <th className="classes__cell">Number</th>
-                            <th className="classes__cell">Capacity</th>
-                            <th className="classes__cell">Tools</th>
+                            <th className="classes__cell">Quantity</th>
+                            <th className="classes__cell">Courses</th>
                             <th className="classes__cell">Available time</th>
                         </tr>
 
-                        {classes.map((item) => {
+                        {groups.map((item) => {
+                            console.log('group', item)
                             return (
                                 <tr className="classes__row">
                                     <td className="classes__cell">{item.name}</td>
-                                    <td className="classes__cell">{item.capacity}</td>
-                                    <td className="classes__cell">{item.tools ? "Есть" : "Нет"}</td>
+                                    <td className="classes__cell">{item.quantity}</td>
+                                    <td className="classes__cell">{item.courses.map(id => getCourse(id))}</td>
                                     <td className="classes__cell">{item.availableSlots.map((slotId) => {
                                         let slot = slots.find(slot => slot.id === slotId)
                                         return (
@@ -129,8 +141,8 @@ function Classes({ classes, slots }) {
                                             </tr>
                                         )
                                     })}</td>
-                                    <img src={editPath} alt="pencil" className="classes__img" id={item.id} onClick={handleEditClass} />
-                                    <img src={trashPath} alt="trash" className="classes__img" id={item.id} onClick={handleDeleteClass} />
+                                    <img src={editPath} alt="pencil" className="classes__img" id={item.id} onClick={handleEditGroup} />
+                                    <img src={trashPath} alt="trash" className="classes__img" id={item.id} onClick={handleDeleteGroup} />
                                 </tr>
                             )
                         })}
@@ -145,4 +157,4 @@ function Classes({ classes, slots }) {
     );
 }
 
-export default Classes;
+export default Groups;

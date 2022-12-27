@@ -21,6 +21,7 @@ function App() {
   const [groups, setGroups] = React.useState([]);
   const [teachers, setTeachers] = React.useState([]);
   const [slots, setSlots] = React.useState([]);
+  const [courses, setCourses] = React.useState([]);
   const [theClass, setTheClass] = React.useState({});
   const [theClassId, setTheClassId] = React.useState();
   const [theGroup, setTheGroup] = React.useState({});
@@ -38,6 +39,7 @@ function App() {
     getGroups();
     getTeachers();
     getSlots();
+    getCourses();
   }, []);
 
   useEffect(() => {
@@ -155,6 +157,14 @@ function App() {
       .catch(err => console.log(err));
   }
 
+  function getCourses() {
+    return api.getCourses()
+      .then((data) => {
+        setCourses(data);
+      })
+      .catch(err => console.log(err));
+  }
+
   return (
     <>
       <Header />
@@ -163,7 +173,9 @@ function App() {
           path="/edit"
           loggedIn={loggedIn}
           classes={classes}
+          groups={groups}
           slots={slots}
+          courses={courses}
           component={Edit}
         />
 

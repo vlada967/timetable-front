@@ -52,12 +52,12 @@ function AddPopup({ isOpen, onClose, onAddPlace }) {
     }
 
     return (
-        <PopupWithForm name='add-card' title='💖 Добавить аудиторию 💖' isOpen={isOpen} onClose={onClose} buttonText="Сохранить" onSubmit={handleSubmit}>
+        <PopupWithForm name='add-card' title='💖 Add class 💖' isOpen={isOpen} onClose={onClose} buttonText="Сохранить" onSubmit={handleSubmit}>
             <input
                 value={name || ''}
                 onChange={handleNameChange}
                 type="text"
-                placeholder="Номер комнаты"
+                placeholder="Number"
                 className="popup__text popup__text_type_title"
                 required />
             <span className="title-input-error popup__error"></span>
@@ -65,13 +65,13 @@ function AddPopup({ isOpen, onClose, onAddPlace }) {
                 value={capacity || ''}
                 onChange={handleCapacityChange}
                 type="number"
-                placeholder="Вместимость"
+                placeholder="Capacity"
                 className="popup__text popup__text_type_link"
                 required />
             <span className="url-input-error popup__error"></span>
 
             <div className="checkbox-cont">
-                <p className="input__subtitle">Инструменты:</p>
+                <p className="input__subtitle">Tools:</p>
                 <label className="container input-check">
                     <input
                         className="popup__table-check "
@@ -84,7 +84,7 @@ function AddPopup({ isOpen, onClose, onAddPlace }) {
                 </label>
             </div>
 
-            <p className="popup__table-text">Выберите время, когда аудитория свободна:</p>
+            <p className="popup__table-text">Choose time when the class is available:</p>
             <table className="popup__table">
                 <tbody>
                     <tr className="popup__table-row">

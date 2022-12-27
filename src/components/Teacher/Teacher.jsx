@@ -1,9 +1,9 @@
 function Teacher({ theTeacher, teacherName }) {
-    const names = [];
+    let names = [];
 
     return (
         <section className="class">
-            <h3 className="class_title">Расписание преподавателя {teacherName}</h3>
+            <h3 className="class_title">Timetable of teacher {teacherName}</h3>
             <table className="table">
                 <tbody>
                     <tr className="table-row">
@@ -22,10 +22,17 @@ function Teacher({ theTeacher, teacherName }) {
 
                         {theTeacher[0].map((item) => {
                             if (item) {
+                                names = [];
                                 item.groups.forEach((group) => {
-                                    names.push(group.name)
-                                    names.push(" ")
+                                    if (!names.includes(group.name)) {
+                                        console.log('group name', group.name)
+                                        console.log('push')
+                                        names.push(group.name)
+                                        names.push(" ")
+                                        console.log('NAMES', names)
+                                    }
                                 })
+                                console.log('NAMES', names)
                                 return <td className="table-cell">{item.course.name} <br></br> {names} <br></br>  {item.room.name}</td>
                             } else {
                                 return <td className="table-cell"></td>
@@ -38,7 +45,11 @@ function Teacher({ theTeacher, teacherName }) {
 
                         {theTeacher[1].map((item) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.groups.name} <br></br>  {item.room.name}</td>
+                                item.groups.forEach((group) => {
+                                    names.push(group.name)
+                                    names.push(" ")
+                                })
+                                return <td className="table-cell">{item.course.name} <br></br> {names} <br></br>  {item.room.name}</td>
                             } else {
                                 return <td className="table-cell"></td>
                             }
@@ -50,7 +61,11 @@ function Teacher({ theTeacher, teacherName }) {
 
                         {theTeacher[2].map((item) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.groups.name} <br></br>  {item.room.name}</td>
+                                item.groups.forEach((group) => {
+                                    names.push(group.name)
+                                    names.push(" ")
+                                })
+                                return <td className="table-cell">{item.course.name} <br></br> {names} <br></br>  {item.room.name}</td>
                             } else {
                                 return <td className="table-cell"></td>
                             }
@@ -62,7 +77,11 @@ function Teacher({ theTeacher, teacherName }) {
 
                         {theTeacher[3].map((item) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.groups.name} <br></br>  {item.room.name}</td>
+                                item.groups.forEach((group) => {
+                                    names.push(group.name)
+                                    names.push(" ")
+                                })
+                                return <td className="table-cell">{item.course.name} <br></br> {names} <br></br>  {item.room.name}</td>
                             } else {
                                 return <td className="table-cell"></td>
                             }
@@ -74,7 +93,11 @@ function Teacher({ theTeacher, teacherName }) {
 
                         {theTeacher[4].map((item) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.groups.name} <br></br>  {item.room.name}</td>
+                                item.groups.forEach((group) => {
+                                    names.push(group.name)
+                                    names.push(" ")
+                                })
+                                return <td className="table-cell">{item.course.name} <br></br> {names} <br></br>  {item.room.name}</td>
                             } else {
                                 return <td className="table-cell"></td>
                             }
@@ -86,7 +109,11 @@ function Teacher({ theTeacher, teacherName }) {
 
                         {theTeacher[5].map((item) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.groups.name} <br></br>  {item.room.name}</td>
+                                item.groups.forEach((group) => {
+                                    names.push(group.name)
+                                    names.push(" ")
+                                })
+                                return <td className="table-cell">{item.course.name} <br></br> {names} <br></br>  {item.room.name}</td>
                             } else {
                                 return <td className="table-cell"></td>
                             }
@@ -98,7 +125,11 @@ function Teacher({ theTeacher, teacherName }) {
 
                         {theTeacher[6].map((item) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.groups.name} <br></br>  {item.room.name}</td>
+                                item.groups.forEach((group) => {
+                                    names.push(group.name)
+                                    names.push(" ")
+                                })
+                                return <td className="table-cell">{item.course.name} <br></br> {names} <br></br>  {item.room.name}</td>
                             } else {
                                 return <td className="table-cell"></td>
                             }

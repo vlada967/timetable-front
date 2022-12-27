@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch, Link, useHistory } from 'react-router-dom';
 import Classes from '../Classes/Classes';
-import Groupes from '../Groupes/Groupes';
+import Groups from '../Groups/Groups';
 import * as api from '../../utils/api.js';
 // import Teachers from '../Teachers/Teachers';
 // import Students from '../Students/Students';
 
-function Edit({ classes, slots }) {
+function Edit({ classes, groups, slots, courses }) {
     const [isVisible, setIsVisible] = React.useState(false);
 
     function generateTimetable() {
@@ -22,14 +22,13 @@ function Edit({ classes, slots }) {
     return (
         <div className="edit">
             <section className="edit__nav">
-                <Link to='/edit/classes' className="edit__link">🎀 Аудитории</Link>
-                <Link to='/edit/groupes' className="edit__link">🎀 Группы</Link>
-                <Link to='/edit/teachers' className="edit__link">🎀 Преподаватели</Link>
-                <Link to='/edit/students' className="edit__link">🎀 Студенты</Link>
-                <Link to='/edit/users' className="edit__link">🎀 Пользователи</Link>
+                <Link to='/edit/classes' className="edit__link">🎀 Classes</Link>
+                <Link to='/edit/groupes' className="edit__link">🎀 Groups</Link>
+                <Link to='/edit/teachers' className="edit__link">🎀 Teachers</Link>
+                <Link to='/edit/users' className="edit__link">🎀 Users</Link>
 
-                <button onClick={generateTimetable} className="edit__button">Сгенерировать расписание</button>
-                <p className={isVisible ? "edit__success edit__opened" : "edit__success"}>Расписание успешно сгенерировано!</p>
+                <button onClick={generateTimetable} className="edit__button">Generate timetable</button>
+                <p className={isVisible ? "edit__success edit__opened" : "edit__success"}>Timetable is successfully generated!</p>
             </section>
 
 
@@ -39,7 +38,7 @@ function Edit({ classes, slots }) {
                     <Classes classes={classes} slots={slots} />
                 </Route>
                 <Route path="/edit/groupes">
-                    <Groupes />
+                    <Groups groups={groups} courses={courses} slots={slots} />
                 </Route>
                 {/* <Route path="/edit/teachers">
                     <Teachers />
