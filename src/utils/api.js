@@ -9,6 +9,17 @@ function _checkResponse(res) {
     return Promise.reject(`Ошибка: ${res.status}`);
 }
 
+export const generateTimetable = () => {
+    return fetch(`${BASE_URL}/table/generate`, {
+        method: 'POST',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => response)
+};
+
 export const getClasses = () => {
     return fetch(`${BASE_URL}/rooms`, {
         method: 'GET',

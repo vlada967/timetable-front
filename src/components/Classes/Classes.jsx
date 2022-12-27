@@ -9,6 +9,16 @@ function Classes({ classes, slots }) {
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState(false);
     const [isEditPopupOpen, setIsEditPopupOpen] = React.useState(false);
     const [theClass, setTheClass] = React.useState([]);
+    const [availableSlots, setAvailableSlots] = React.useState([]);
+    const [isChecked, setIsChecked] = React.useState([false, false, false, false, false, false, false,
+        false, false, false, false, false, false, false,
+        false, false, false, false, false, false, false,
+        false, false, false, false, false, false, false,
+        false, false, false, false, false, false, false,
+        false, false, false, false, false, false, false,
+        false, false, false, false, false, false, false]);
+    let checked = [];
+    let available = [];
 
     function getDay(id) {
         switch (id) {
@@ -61,8 +71,19 @@ function Classes({ classes, slots }) {
         classes.forEach(c => {
             if (c.id.toString() === e.target.id) {
                 setTheClass(c);
+                available = c.availableSlots;
+                setAvailableSlots(available);
             }
         });
+
+        for (let i = 1; i <= 49; i++) {
+            if (available.includes(i)) {
+                checked[i] = true;
+            } else {
+                checked[i] = false;
+            }
+        }
+        setIsChecked(checked);
         setIsEditPopupOpen(true);
     }
 
@@ -119,7 +140,7 @@ function Classes({ classes, slots }) {
             </div>
 
             <AddPopup isOpen={isAddPopupOpen} onClose={closePopup} slots={slots}></AddPopup>
-            <EditPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass} slots={slots}></EditPopup>
+            <EditPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass} isChecked={isChecked} availableSlots={availableSlots}></EditPopup>
         </section>
     );
 }
