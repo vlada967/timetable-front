@@ -136,6 +136,22 @@ export const addClass = (name, capacity, tools, slots) => {
         .then((response) => _checkResponse(response))
 };
 
+export const addTeacher = (name, courses, slots) => {
+    return fetch(`${BASE_URL}/teachers`, {
+        method: 'POST',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            courses: courses,
+            slots: slots
+        })
+    })
+        .then((response) => _checkResponse(response))
+};
+
 export const editClass = (id, name, capacity, tools, slots) => {
     return fetch(`${BASE_URL}/rooms/${id}`, {
         method: 'PATCH',
@@ -147,7 +163,7 @@ export const editClass = (id, name, capacity, tools, slots) => {
             name: name,
             capacity: capacity,
             tools: tools,
-            availableSlots: slots
+            slots: slots
         })
     })
         .then((response) => _checkResponse(response))

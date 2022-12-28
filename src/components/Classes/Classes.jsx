@@ -115,11 +115,12 @@ function Classes({ classes, slots }) {
                         </tr>
 
                         {classes.map((item) => {
+                            console.log('CLASSES', item)
                             return (
                                 <tr className="classes__row">
                                     <td className="classes__cell">{item.name}</td>
                                     <td className="classes__cell">{item.capacity}</td>
-                                    <td className="classes__cell">{item.tools ? "Есть" : "Нет"}</td>
+                                    <td className="classes__cell">{item.tools ? "Has" : "No"}</td>
                                     <td className="classes__cell">{item.availableSlots.map((slotId) => {
                                         let slot = slots.find(slot => slot.id === slotId)
                                         return (

@@ -70,10 +70,10 @@ function Login({ onLogin }) {
 
     return (
         <div className="login">
-            <h2 className="login__title">💓 💖 💝 Вход 💕 🎀 🌸</h2>
+            <h2 className="login__title">💓 💖 💝 Sign In 💕 🎀 🌸</h2>
             <form onSubmit={handleSubmit} className="login__form">
                 <div className="login__cont">
-                    <h3 className="login__subtitle">Логин:</h3>
+                    <h3 className="login__subtitle">Email:</h3>
                     <div className="login__div">
                         <input className="login__input" onChange={handleEmailChange} required />
                         {(emailWrong && emailError) && <div className="login__error">{emailError}</div>}
@@ -81,14 +81,14 @@ function Login({ onLogin }) {
 
                 </div>
                 <div className="login__cont">
-                    <h3 className="login__subtitle">Пароль:</h3>
+                    <h3 className="login__subtitle">Password:</h3>
                     <div className="login__div">
                         <input type="password" className="login__input" onChange={handlePasswordChange} required />
                         {(passwordWrong && passwordError) && <div className="login__error">{passwordError}</div>}
                     </div>
 
                 </div>
-                <button className="" className={isActive ? "login__submit login__active" : "login__submit"} disabled={isActive ? false : true}>Войти</button>
+                <button className="" className={isActive ? "login__submit login__active" : "login__submit"} disabled={isActive ? false : true}>Sign In</button>
             </form>
         </div>
     );

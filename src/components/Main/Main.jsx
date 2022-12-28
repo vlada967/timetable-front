@@ -14,8 +14,8 @@ function Main() {
 
     return (
         <div className="main">
-            <button onClick={login} className="main__button">💕 Войти</button>
-            <button onClick={view} className="main__button">💕 Просмотр</button>
+            <button onClick={login} className="main__button">💕 Sign In</button>
+            <button onClick={view} className="main__button">💕 View</button>
         </div>
     );
 }

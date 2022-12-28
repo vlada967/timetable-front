@@ -115,3 +115,11 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+.input__subtitle-checkbox {
+  margin-top: 30px;
+}
+
+.popup_add-teacher {
+margin-left: 10px;
+}

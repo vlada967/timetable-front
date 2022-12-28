@@ -52,7 +52,7 @@ function AddPopup({ isOpen, onClose, onAddPlace }) {
     }
 
     return (
-        <PopupWithForm name='add-card' title='💖 Add class 💖' isOpen={isOpen} onClose={onClose} buttonText="Сохранить" onSubmit={handleSubmit}>
+        <PopupWithForm name='add-card' title='💖 Add class 💖' isOpen={isOpen} onClose={onClose} buttonText="Save" onSubmit={handleSubmit}>
             <input
                 value={name || ''}
                 onChange={handleNameChange}

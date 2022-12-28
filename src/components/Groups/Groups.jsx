@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import * as api from '../../utils/api.js';
 import editPath from '../../images/edit.svg';
 import trashPath from '../../images/trash.svg';
-import AddPopup from '../AddPopup/AddPopup';
+import AddGroupPopup from '../AddGroupPopup/AddGroupPopup';
 import EditPopup from '../EditPopup/EditPopup';
 
 function Groups({ groups, courses, slots }) {
@@ -60,11 +60,11 @@ function Groups({ groups, courses, slots }) {
 
     function getCourse(id) {
         switch (id) {
-            case 1:
+            case 124:
                 return "OS ";
-            case 2:
+            case 126:
                 return "Java ";
-            case 3:
+            case 132:
                 return "PAC ";
         }
     }
@@ -151,7 +151,7 @@ function Groups({ groups, courses, slots }) {
                 </table>
             </div>
 
-            <AddPopup isOpen={isAddPopupOpen} onClose={closePopup} slots={slots}></AddPopup>
+            <AddGroupPopup isOpen={isAddPopupOpen} onClose={closePopup} slots={slots}></AddGroupPopup>
             <EditPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass} isChecked={isChecked} availableSlots={availableSlots}></EditPopup>
         </section>
     );

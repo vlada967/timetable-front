@@ -60,8 +60,6 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
     const [slots, setSlots] = React.useState([]);
     // let slots = availableSlots;
 
-    console.log('default slots', slots)
-
     useEffect(() => {
         setName(theClass.name);
         setCapacity(theClass.capacity);
@@ -422,12 +420,12 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
     }
 
     return (
-        <PopupWithForm name='add-card' title='💖 Редактировать аудиторию 💖' isOpen={isOpen} onClose={onClose} buttonText="Сохранить" onSubmit={handleSubmit}>
+        <PopupWithForm name='add-card' title='💖 Edit the class 💖' isOpen={isOpen} onClose={onClose} buttonText="Сохранить" onSubmit={handleSubmit}>
             <input
                 value={name || ''}
                 onChange={handleNameChange}
                 type="text"
-                placeholder="Номер комнаты"
+                placeholder="Number"
                 className="popup__text popup__text_type_title"
                 required />
             <span className="title-input-error popup__error"></span>
@@ -435,13 +433,13 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
                 value={capacity || ''}
                 onChange={handleCapacityChange}
                 type="number"
-                placeholder="Вместимость"
+                placeholder="Capacity"
                 className="popup__text popup__text_type_link"
                 required />
             <span className="url-input-error popup__error"></span>
 
             <div className="checkbox-cont">
-                <p className="input__subtitle">Инструменты:</p>
+                <p className="input__subtitle">Tools:</p>
                 <label className="container input-check">
                     <input
                         className="popup__table-check "
@@ -454,7 +452,7 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
                 </label>
             </div>
 
-            <p className="popup__table-text">Выберите время, когда аудитория свободна:</p>
+            <p className="popup__table-text">Choose time when the class is available:</p>
             <table className="popup__table">
                 <tbody>
                     <tr className="popup__table-row">
@@ -579,7 +577,7 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
                                     id="8"
                                     value={slots8}
                                     checked={slots8}
-                                    onChange={handleSlot8Change}
+                                    onChange={handleSlot2Change}
                                 />
                                 <span className="checkmark"></span>
                             </label>
