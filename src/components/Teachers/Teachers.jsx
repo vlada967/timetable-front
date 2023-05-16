@@ -3,12 +3,13 @@ import * as api from '../../utils/api.js';
 import editPath from '../../images/edit.svg';
 import trashPath from '../../images/trash.svg';
 import AddTeacherPopup from '../AddTeacherPopup/AddTeacherPopup';
+import EditTeacherPopup from '../EditTeacherPopup/EditTeacherPopup';
 import EditPopup from '../EditPopup/EditPopup';
 
-function Teachers({ teachers, slots }) {
+function Teachers({ teachers, setTeachers, slots }) {
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState(false);
     const [isEditPopupOpen, setIsEditPopupOpen] = React.useState(false);
-    const [theClass, setTheClass] = React.useState([]);
+    const [theTeacher, setTheTeacher] = React.useState([]);
     const [availableSlots, setAvailableSlots] = React.useState([]);
     const [isChecked, setIsChecked] = React.useState([false, false, false, false, false, false, false,
         false, false, false, false, false, false, false,
@@ -78,10 +79,10 @@ function Teachers({ teachers, slots }) {
         setIsAddPopupOpen(true);
     }
 
-    function handleEditGroup(e) {
+    function handleEditTeacher(e) {
         teachers.forEach(c => {
             if (c.id.toString() === e.target.id) {
-                setTheClass(c);
+                setTheTeacher(c);
                 available = c.availableSlots;
                 setAvailableSlots(available);
             }
@@ -98,14 +99,14 @@ function Teachers({ teachers, slots }) {
         setIsEditPopupOpen(true);
     }
 
-    function handleDeleteGroup(e) {
-        // api.deleteGroup(e.target.id)
-        //     .then(() => {
-        //         setClasses((state) => state.filter(c => c.id !== e.target.id));
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
+    function handleDeleteTeacher(e) {
+        api.deleteTeacher(e.target.id)
+            .then(() => {
+                setTeachers((state) => state.filter(c => c.id !== e.target.id));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     return (
@@ -141,8 +142,8 @@ function Teachers({ teachers, slots }) {
                                             </tr>
                                         )
                                     })}</td>
-                                    <img src={editPath} alt="pencil" className="classes__img" id={item.id} onClick={handleEditGroup} />
-                                    <img src={trashPath} alt="trash" className="classes__img" id={item.id} onClick={handleDeleteGroup} />
+                                    <img src={editPath} alt="pencil" className="classes__img" id={item.id} onClick={handleEditTeacher} />
+                                    <img src={trashPath} alt="trash" className="classes__img" id={item.id} onClick={handleDeleteTeacher} />
                                 </tr>
                             )
                         })}
@@ -152,7 +153,7 @@ function Teachers({ teachers, slots }) {
             </div>
 
             <AddTeacherPopup isOpen={isAddPopupOpen} onClose={closePopup} slots={slots}></AddTeacherPopup>
-            <EditPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass} isChecked={isChecked} availableSlots={availableSlots}></EditPopup>
+            <EditTeacherPopup isOpen={isEditPopupOpen} onClose={closePopup} theTeacher={theTeacher} isChecked={isChecked} availableSlots={availableSlots}></EditTeacherPopup>
         </section>
     );
 }

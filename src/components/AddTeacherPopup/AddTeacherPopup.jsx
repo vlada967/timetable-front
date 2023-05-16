@@ -39,14 +39,14 @@ function AddTeacherPopup({ isOpen, onClose }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(name, courses, slots)
-        // api.addTeacher(name, courses, slots)
-        //     .then((data) => {
-        //         console.log(data)
-        //     })
-        //     .catch(err => console.log(err));
+        console.log(name, slots);
+        api.addTeacher(name, slots)
+            .then((data) => {
+                console.log(data)
+            })
+            .catch(err => console.log(err));
         setName('');
-        setCourses([]);
+        // setCourses([]);
         slots = [];
         e.target.closest('form').reset();
         onClose();

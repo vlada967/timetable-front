@@ -6,56 +6,55 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
     const [name, setName] = React.useState('');
     const [capacity, setCapacity] = React.useState('');
     const [tools, setTools] = React.useState(false);
-
-    const [slots1, setSlots1] = React.useState(false);
-    const [slots2, setSlots2] = React.useState(false);
-    const [slots3, setSlots3] = React.useState(false);
-    const [slots4, setSlots4] = React.useState(false);
-    const [slots5, setSlots5] = React.useState(false);
-    const [slots6, setSlots6] = React.useState(false);
-    const [slots7, setSlots7] = React.useState(false);
-    const [slots8, setSlots8] = React.useState(false);
-    const [slots9, setSlots9] = React.useState(false);
-    const [slots10, setSlots10] = React.useState(false);
-    const [slots11, setSlots11] = React.useState(false);
-    const [slots12, setSlots12] = React.useState(false);
-    const [slots13, setSlots13] = React.useState(false);
-    const [slots14, setSlots14] = React.useState(false);
-    const [slots15, setSlots15] = React.useState(false);
-    const [slots16, setSlots16] = React.useState(false);
-    const [slots17, setSlots17] = React.useState(false);
-    const [slots18, setSlots18] = React.useState(false);
-    const [slots19, setSlots19] = React.useState(false);
-    const [slots20, setSlots20] = React.useState(false);
-    const [slots21, setSlots21] = React.useState(false);
-    const [slots22, setSlots22] = React.useState(false);
-    const [slots23, setSlots23] = React.useState(false);
-    const [slots24, setSlots24] = React.useState(false);
-    const [slots25, setSlots25] = React.useState(false);
-    const [slots26, setSlots26] = React.useState(false);
-    const [slots27, setSlots27] = React.useState(false);
-    const [slots28, setSlots28] = React.useState(false);
-    const [slots29, setSlots29] = React.useState(false);
-    const [slots30, setSlots30] = React.useState(false);
-    const [slots31, setSlots31] = React.useState(false);
-    const [slots32, setSlots32] = React.useState(false);
-    const [slots33, setSlots33] = React.useState(false);
-    const [slots34, setSlots34] = React.useState(false);
-    const [slots35, setSlots35] = React.useState(false);
-    const [slots36, setSlots36] = React.useState(false);
-    const [slots37, setSlots37] = React.useState(false);
-    const [slots38, setSlots38] = React.useState(false);
-    const [slots39, setSlots39] = React.useState(false);
-    const [slots40, setSlots40] = React.useState(false);
-    const [slots41, setSlots41] = React.useState(false);
-    const [slots42, setSlots42] = React.useState(false);
-    const [slots43, setSlots43] = React.useState(false);
-    const [slots44, setSlots44] = React.useState(false);
-    const [slots45, setSlots45] = React.useState(false);
-    const [slots46, setSlots46] = React.useState(false);
-    const [slots47, setSlots47] = React.useState(false);
-    const [slots48, setSlots48] = React.useState(false);
-    const [slots49, setSlots49] = React.useState(false);
+    // const [slots1, setSlots1] = React.useState(false);
+    // const [slots2, setSlots2] = React.useState(false);
+    // const [slots3, setSlots3] = React.useState(false);
+    // const [slots4, setSlots4] = React.useState(false);
+    // const [slots5, setSlots5] = React.useState(false);
+    // const [slots6, setSlots6] = React.useState(false);
+    // const [slots7, setSlots7] = React.useState(false);
+    // const [slots8, setSlots8] = React.useState(false);
+    // const [slots9, setSlots9] = React.useState(false);
+    // const [slots10, setSlots10] = React.useState(false);
+    // const [slots11, setSlots11] = React.useState(false);
+    // const [slots12, setSlots12] = React.useState(false);
+    // const [slots13, setSlots13] = React.useState(false);
+    // const [slots14, setSlots14] = React.useState(false);
+    // const [slots15, setSlots15] = React.useState(false);
+    // const [slots16, setSlots16] = React.useState(false);
+    // const [slots17, setSlots17] = React.useState(false);
+    // const [slots18, setSlots18] = React.useState(false);
+    // const [slots19, setSlots19] = React.useState(false);
+    // const [slots20, setSlots20] = React.useState(false);
+    // const [slots21, setSlots21] = React.useState(false);
+    // const [slots22, setSlots22] = React.useState(false);
+    // const [slots23, setSlots23] = React.useState(false);
+    // const [slots24, setSlots24] = React.useState(false);
+    // const [slots25, setSlots25] = React.useState(false);
+    // const [slots26, setSlots26] = React.useState(false);
+    // const [slots27, setSlots27] = React.useState(false);
+    // const [slots28, setSlots28] = React.useState(false);
+    // const [slots29, setSlots29] = React.useState(false);
+    // const [slots30, setSlots30] = React.useState(false);
+    // const [slots31, setSlots31] = React.useState(false);
+    // const [slots32, setSlots32] = React.useState(false);
+    // const [slots33, setSlots33] = React.useState(false);
+    // const [slots34, setSlots34] = React.useState(false);
+    // const [slots35, setSlots35] = React.useState(false);
+    // const [slots36, setSlots36] = React.useState(false);
+    // const [slots37, setSlots37] = React.useState(false);
+    // const [slots38, setSlots38] = React.useState(false);
+    // const [slots39, setSlots39] = React.useState(false);
+    // const [slots40, setSlots40] = React.useState(false);
+    // const [slots41, setSlots41] = React.useState(false);
+    // const [slots42, setSlots42] = React.useState(false);
+    // const [slots43, setSlots43] = React.useState(false);
+    // const [slots44, setSlots44] = React.useState(false);
+    // const [slots45, setSlots45] = React.useState(false);
+    // const [slots46, setSlots46] = React.useState(false);
+    // const [slots47, setSlots47] = React.useState(false);
+    // const [slots48, setSlots48] = React.useState(false);
+    // const [slots49, setSlots49] = React.useState(false);
 
     const [slots, setSlots] = React.useState([]);
     // let slots = availableSlots;
@@ -65,55 +64,55 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
         setCapacity(theClass.capacity);
         setTools(theClass.tools);
 
-        setSlots1(isChecked[1]);
-        setSlots2(isChecked[2]);
-        setSlots3(isChecked[3]);
-        setSlots4(isChecked[4]);
-        setSlots5(isChecked[5]);
-        setSlots6(isChecked[6]);
-        setSlots7(isChecked[7]);
-        setSlots8(isChecked[8]);
-        setSlots9(isChecked[9]);
-        setSlots10(isChecked[10]);
-        setSlots11(isChecked[11]);
-        setSlots12(isChecked[12]);
-        setSlots13(isChecked[13]);
-        setSlots14(isChecked[14]);
-        setSlots15(isChecked[15]);
-        setSlots16(isChecked[16]);
-        setSlots17(isChecked[17]);
-        setSlots18(isChecked[18]);
-        setSlots19(isChecked[19]);
-        setSlots20(isChecked[20]);
-        setSlots21(isChecked[21]);
-        setSlots22(isChecked[22]);
-        setSlots23(isChecked[23]);
-        setSlots24(isChecked[24]);
-        setSlots25(isChecked[25]);
-        setSlots26(isChecked[26]);
-        setSlots27(isChecked[27]);
-        setSlots28(isChecked[28]);
-        setSlots29(isChecked[29]);
-        setSlots30(isChecked[30]);
-        setSlots31(isChecked[31]);
-        setSlots32(isChecked[32]);
-        setSlots33(isChecked[33]);
-        setSlots34(isChecked[34]);
-        setSlots35(isChecked[35]);
-        setSlots36(isChecked[36]);
-        setSlots37(isChecked[37]);
-        setSlots38(isChecked[38]);
-        setSlots39(isChecked[39]);
-        setSlots40(isChecked[40]);
-        setSlots41(isChecked[41]);
-        setSlots42(isChecked[42]);
-        setSlots43(isChecked[43]);
-        setSlots44(isChecked[44]);
-        setSlots45(isChecked[45]);
-        setSlots46(isChecked[46]);
-        setSlots47(isChecked[47]);
-        setSlots48(isChecked[48]);
-        setSlots49(isChecked[49]);
+        // setSlots1(isChecked[1]);
+        // setSlots2(isChecked[2]);
+        // setSlots3(isChecked[3]);
+        // setSlots4(isChecked[4]);
+        // setSlots5(isChecked[5]);
+        // setSlots6(isChecked[6]);
+        // setSlots7(isChecked[7]);
+        // setSlots8(isChecked[8]);
+        // setSlots9(isChecked[9]);
+        // setSlots10(isChecked[10]);
+        // setSlots11(isChecked[11]);
+        // setSlots12(isChecked[12]);
+        // setSlots13(isChecked[13]);
+        // setSlots14(isChecked[14]);
+        // setSlots15(isChecked[15]);
+        // setSlots16(isChecked[16]);
+        // setSlots17(isChecked[17]);
+        // setSlots18(isChecked[18]);
+        // setSlots19(isChecked[19]);
+        // setSlots20(isChecked[20]);
+        // setSlots21(isChecked[21]);
+        // setSlots22(isChecked[22]);
+        // setSlots23(isChecked[23]);
+        // setSlots24(isChecked[24]);
+        // setSlots25(isChecked[25]);
+        // setSlots26(isChecked[26]);
+        // setSlots27(isChecked[27]);
+        // setSlots28(isChecked[28]);
+        // setSlots29(isChecked[29]);
+        // setSlots30(isChecked[30]);
+        // setSlots31(isChecked[31]);
+        // setSlots32(isChecked[32]);
+        // setSlots33(isChecked[33]);
+        // setSlots34(isChecked[34]);
+        // setSlots35(isChecked[35]);
+        // setSlots36(isChecked[36]);
+        // setSlots37(isChecked[37]);
+        // setSlots38(isChecked[38]);
+        // setSlots39(isChecked[39]);
+        // setSlots40(isChecked[40]);
+        // setSlots41(isChecked[41]);
+        // setSlots42(isChecked[42]);
+        // setSlots43(isChecked[43]);
+        // setSlots44(isChecked[44]);
+        // setSlots45(isChecked[45]);
+        // setSlots46(isChecked[46]);
+        // setSlots47(isChecked[47]);
+        // setSlots48(isChecked[48]);
+        // setSlots49(isChecked[49]);
 
         setSlots(availableSlots);
     }, [isOpen]);
@@ -132,259 +131,259 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
 
     // --------- SLOTS --------------
 
-    function handleSlot1Change(e) {
-        setSlots1(e.target.checked);
-        handleSlotsChange(1);
-    }
+    // function handleSlot1Change(e) {
+    //     setSlots1(e.target.checked);
+    //     handleSlotsChange(1);
+    // }
 
-    function handleSlot2Change(e) {
-        setSlots2(e.target.checked);
-        handleSlotsChange(2);
-    }
+    // function handleSlot2Change(e) {
+    //     setSlots2(e.target.checked);
+    //     handleSlotsChange(2);
+    // }
 
-    function handleSlot3Change(e) {
-        setSlots3(e.target.checked);
-        handleSlotsChange(3);
-    }
+    // function handleSlot3Change(e) {
+    //     setSlots3(e.target.checked);
+    //     handleSlotsChange(3);
+    // }
 
-    function handleSlot4Change(e) {
-        setSlots4(e.target.checked);
-        handleSlotsChange(4);
-    }
+    // function handleSlot4Change(e) {
+    //     setSlots4(e.target.checked);
+    //     handleSlotsChange(4);
+    // }
 
-    function handleSlot5Change(e) {
-        setSlots5(e.target.checked);
-        handleSlotsChange(5);
-    }
+    // function handleSlot5Change(e) {
+    //     setSlots5(e.target.checked);
+    //     handleSlotsChange(5);
+    // }
 
-    function handleSlot6Change(e) {
-        setSlots6(e.target.checked);
-        handleSlotsChange(6);
-    }
+    // function handleSlot6Change(e) {
+    //     setSlots6(e.target.checked);
+    //     handleSlotsChange(6);
+    // }
 
-    function handleSlot7Change(e) {
-        setSlots7(e.target.checked);
-        handleSlotsChange(7);
-    }
+    // function handleSlot7Change(e) {
+    //     setSlots7(e.target.checked);
+    //     handleSlotsChange(7);
+    // }
 
-    function handleSlot8Change(e) {
-        setSlots8(e.target.checked);
-        handleSlotsChange(8);
-    }
+    // function handleSlot8Change(e) {
+    //     setSlots8(e.target.checked);
+    //     handleSlotsChange(8);
+    // }
 
-    function handleSlot9Change(e) {
-        setSlots9(e.target.checked);
-        handleSlotsChange(9);
-    }
+    // function handleSlot9Change(e) {
+    //     setSlots9(e.target.checked);
+    //     handleSlotsChange(9);
+    // }
 
-    function handleSlot10Change(e) {
-        setSlots10(e.target.checked);
-        handleSlotsChange(10);
-    }
-
-
-
-    function handleSlot11Change(e) {
-        setSlots11(e.target.checked);
-        handleSlotsChange(11);
-    }
-
-    function handleSlot12Change(e) {
-        setSlots12(e.target.checked);
-        handleSlotsChange(12);
-    }
-
-    function handleSlot13Change(e) {
-        setSlots13(e.target.checked);
-        handleSlotsChange(13);
-    }
-
-    function handleSlot14Change(e) {
-        setSlots14(e.target.checked);
-        handleSlotsChange(14);
-    }
-
-    function handleSlot15Change(e) {
-        setSlots15(e.target.checked);
-        handleSlotsChange(15);
-    }
-
-    function handleSlot16Change(e) {
-        setSlots16(e.target.checked);
-        handleSlotsChange(16);
-    }
-
-    function handleSlot17Change(e) {
-        setSlots17(e.target.checked);
-        handleSlotsChange(17);
-    }
-
-    function handleSlot18Change(e) {
-        setSlots18(e.target.checked);
-        handleSlotsChange(18);
-    }
-
-    function handleSlot19Change(e) {
-        setSlots19(e.target.checked);
-        handleSlotsChange(19);
-    }
-
-    function handleSlot20Change(e) {
-        setSlots20(e.target.checked);
-        handleSlotsChange(20);
-    }
+    // function handleSlot10Change(e) {
+    //     setSlots10(e.target.checked);
+    //     handleSlotsChange(10);
+    // }
 
 
 
+    // function handleSlot11Change(e) {
+    //     setSlots11(e.target.checked);
+    //     handleSlotsChange(11);
+    // }
 
-    function handleSlot21Change(e) {
-        setSlots21(e.target.checked);
-        handleSlotsChange(21);
-    }
+    // function handleSlot12Change(e) {
+    //     setSlots12(e.target.checked);
+    //     handleSlotsChange(12);
+    // }
 
-    function handleSlot22Change(e) {
-        setSlots22(e.target.checked);
-        handleSlotsChange(22);
-    }
+    // function handleSlot13Change(e) {
+    //     setSlots13(e.target.checked);
+    //     handleSlotsChange(13);
+    // }
 
-    function handleSlot23Change(e) {
-        setSlots23(e.target.checked);
-        handleSlotsChange(23);
-    }
+    // function handleSlot14Change(e) {
+    //     setSlots14(e.target.checked);
+    //     handleSlotsChange(14);
+    // }
 
-    function handleSlot24Change(e) {
-        setSlots24(e.target.checked);
-        handleSlotsChange(24);
-    }
+    // function handleSlot15Change(e) {
+    //     setSlots15(e.target.checked);
+    //     handleSlotsChange(15);
+    // }
 
-    function handleSlot25Change(e) {
-        setSlots25(e.target.checked);
-        handleSlotsChange(25);
-    }
+    // function handleSlot16Change(e) {
+    //     setSlots16(e.target.checked);
+    //     handleSlotsChange(16);
+    // }
 
-    function handleSlot26Change(e) {
-        setSlots26(e.target.checked);
-        handleSlotsChange(26);
-    }
+    // function handleSlot17Change(e) {
+    //     setSlots17(e.target.checked);
+    //     handleSlotsChange(17);
+    // }
 
-    function handleSlot27Change(e) {
-        setSlots27(e.target.checked);
-        handleSlotsChange(27);
-    }
+    // function handleSlot18Change(e) {
+    //     setSlots18(e.target.checked);
+    //     handleSlotsChange(18);
+    // }
 
-    function handleSlot28Change(e) {
-        setSlots28(e.target.checked);
-        handleSlotsChange(28);
-    }
+    // function handleSlot19Change(e) {
+    //     setSlots19(e.target.checked);
+    //     handleSlotsChange(19);
+    // }
 
-    function handleSlot29Change(e) {
-        setSlots29(e.target.checked);
-        handleSlotsChange(29);
-    }
-
-    function handleSlot30Change(e) {
-        setSlots30(e.target.checked);
-        handleSlotsChange(30);
-    }
+    // function handleSlot20Change(e) {
+    //     setSlots20(e.target.checked);
+    //     handleSlotsChange(20);
+    // }
 
 
 
 
-    function handleSlot31Change(e) {
-        setSlots31(e.target.checked);
-        handleSlotsChange(31);
-    }
+    // function handleSlot21Change(e) {
+    //     setSlots21(e.target.checked);
+    //     handleSlotsChange(21);
+    // }
 
-    function handleSlot32Change(e) {
-        setSlots32(e.target.checked);
-        handleSlotsChange(32);
-    }
+    // function handleSlot22Change(e) {
+    //     setSlots22(e.target.checked);
+    //     handleSlotsChange(22);
+    // }
 
-    function handleSlot33Change(e) {
-        setSlots33(e.target.checked);
-        handleSlotsChange(33);
-    }
+    // function handleSlot23Change(e) {
+    //     setSlots23(e.target.checked);
+    //     handleSlotsChange(23);
+    // }
 
-    function handleSlot34Change(e) {
-        setSlots34(e.target.checked);
-        handleSlotsChange(34);
-    }
+    // function handleSlot24Change(e) {
+    //     setSlots24(e.target.checked);
+    //     handleSlotsChange(24);
+    // }
 
-    function handleSlot35Change(e) {
-        setSlots35(e.target.checked);
-        handleSlotsChange(35);
-    }
+    // function handleSlot25Change(e) {
+    //     setSlots25(e.target.checked);
+    //     handleSlotsChange(25);
+    // }
 
-    function handleSlot36Change(e) {
-        setSlots36(e.target.checked);
-        handleSlotsChange(36);
-    }
+    // function handleSlot26Change(e) {
+    //     setSlots26(e.target.checked);
+    //     handleSlotsChange(26);
+    // }
 
-    function handleSlot37Change(e) {
-        setSlots37(e.target.checked);
-        handleSlotsChange(37);
-    }
+    // function handleSlot27Change(e) {
+    //     setSlots27(e.target.checked);
+    //     handleSlotsChange(27);
+    // }
 
-    function handleSlot38Change(e) {
-        setSlots38(e.target.checked);
-        handleSlotsChange(38);
-    }
+    // function handleSlot28Change(e) {
+    //     setSlots28(e.target.checked);
+    //     handleSlotsChange(28);
+    // }
 
-    function handleSlot39Change(e) {
-        setSlots39(e.target.checked);
-        handleSlotsChange(39);
-    }
+    // function handleSlot29Change(e) {
+    //     setSlots29(e.target.checked);
+    //     handleSlotsChange(29);
+    // }
 
-    function handleSlot40Change(e) {
-        setSlots40(e.target.checked);
-        handleSlotsChange(40);
-    }
+    // function handleSlot30Change(e) {
+    //     setSlots30(e.target.checked);
+    //     handleSlotsChange(30);
+    // }
 
 
-    function handleSlot41Change(e) {
-        setSlots41(e.target.checked);
-        handleSlotsChange(41);
-    }
 
-    function handleSlot42Change(e) {
-        setSlots42(e.target.checked);
-        handleSlotsChange(42);
-    }
 
-    function handleSlot43Change(e) {
-        setSlots43(e.target.checked);
-        handleSlotsChange(43);
-    }
+    // function handleSlot31Change(e) {
+    //     setSlots31(e.target.checked);
+    //     handleSlotsChange(31);
+    // }
 
-    function handleSlot44Change(e) {
-        setSlots44(e.target.checked);
-        handleSlotsChange(44);
-    }
+    // function handleSlot32Change(e) {
+    //     setSlots32(e.target.checked);
+    //     handleSlotsChange(32);
+    // }
 
-    function handleSlot45Change(e) {
-        setSlots45(e.target.checked);
-        handleSlotsChange(45);
-    }
+    // function handleSlot33Change(e) {
+    //     setSlots33(e.target.checked);
+    //     handleSlotsChange(33);
+    // }
 
-    function handleSlot46Change(e) {
-        setSlots46(e.target.checked);
-        handleSlotsChange(46);
-    }
+    // function handleSlot34Change(e) {
+    //     setSlots34(e.target.checked);
+    //     handleSlotsChange(34);
+    // }
 
-    function handleSlot47Change(e) {
-        setSlots47(e.target.checked);
-        handleSlotsChange(47);
-    }
+    // function handleSlot35Change(e) {
+    //     setSlots35(e.target.checked);
+    //     handleSlotsChange(35);
+    // }
 
-    function handleSlot48Change(e) {
-        setSlots48(e.target.checked);
-        handleSlotsChange(48);
-    }
+    // function handleSlot36Change(e) {
+    //     setSlots36(e.target.checked);
+    //     handleSlotsChange(36);
+    // }
 
-    function handleSlot49Change(e) {
-        setSlots49(e.target.checked);
-        handleSlotsChange(49);
-    }
+    // function handleSlot37Change(e) {
+    //     setSlots37(e.target.checked);
+    //     handleSlotsChange(37);
+    // }
+
+    // function handleSlot38Change(e) {
+    //     setSlots38(e.target.checked);
+    //     handleSlotsChange(38);
+    // }
+
+    // function handleSlot39Change(e) {
+    //     setSlots39(e.target.checked);
+    //     handleSlotsChange(39);
+    // }
+
+    // function handleSlot40Change(e) {
+    //     setSlots40(e.target.checked);
+    //     handleSlotsChange(40);
+    // }
+
+
+    // function handleSlot41Change(e) {
+    //     setSlots41(e.target.checked);
+    //     handleSlotsChange(41);
+    // }
+
+    // function handleSlot42Change(e) {
+    //     setSlots42(e.target.checked);
+    //     handleSlotsChange(42);
+    // }
+
+    // function handleSlot43Change(e) {
+    //     setSlots43(e.target.checked);
+    //     handleSlotsChange(43);
+    // }
+
+    // function handleSlot44Change(e) {
+    //     setSlots44(e.target.checked);
+    //     handleSlotsChange(44);
+    // }
+
+    // function handleSlot45Change(e) {
+    //     setSlots45(e.target.checked);
+    //     handleSlotsChange(45);
+    // }
+
+    // function handleSlot46Change(e) {
+    //     setSlots46(e.target.checked);
+    //     handleSlotsChange(46);
+    // }
+
+    // function handleSlot47Change(e) {
+    //     setSlots47(e.target.checked);
+    //     handleSlotsChange(47);
+    // }
+
+    // function handleSlot48Change(e) {
+    //     setSlots48(e.target.checked);
+    //     handleSlotsChange(48);
+    // }
+
+    // function handleSlot49Change(e) {
+    //     setSlots49(e.target.checked);
+    //     handleSlotsChange(49);
+    // }
 
 
 
@@ -474,15 +473,15 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
                                     className="popup__table-check"
                                     type="checkbox"
                                     id="1"
-                                    value={slots1}
-                                    checked={slots1}
-                                    onChange={handleSlot1Change}
+                                // value={slots1}
+                                // checked={slots1}
+                                // onChange={handleSlot1Change}
                                 />
                                 <span className="checkmark"></span>
                             </label>
                         </td>
 
-                        <td className="popup__table-cell">
+                        {/* <td className="popup__table-cell">
                             <label className="container">
                                 <input
                                     className="popup__table-check"
@@ -1170,7 +1169,7 @@ function EditPopup({ isOpen, onClose, theClass, isChecked, availableSlots }) {
                                 />
                                 <span className="checkmark"></span>
                             </label>
-                        </td>
+                        </td>*/}
                     </tr>
                 </tbody>
             </table>

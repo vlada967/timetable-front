@@ -6,7 +6,7 @@ import * as api from '../../utils/api.js';
 import Teachers from '../Teachers/Teachers';
 import Courses from '../Courses/Courses';
 
-function Edit({ classes, groups, slots, courses, teachers }) {
+function Edit({ classes, groups, slots, courses, teachers, setTeachers }) {
     const [isVisible, setIsVisible] = React.useState(false);
 
     function generateTimetable() {
@@ -26,7 +26,6 @@ function Edit({ classes, groups, slots, courses, teachers }) {
                 <Link to='/edit/groupes' className="edit__link">🎀 Groups</Link>
                 <Link to='/edit/teachers' className="edit__link">🎀 Teachers</Link>
                 <Link to='/edit/courses' className="edit__link">🎀 Courses</Link>
-                {/* <Link to='/edit/users' className="edit__link">🎀 Users</Link> */}
 
                 <button onClick={generateTimetable} className="edit__button">Generate timetable</button>
                 <p className={isVisible ? "edit__success edit__opened" : "edit__success"}>Timetable is successfully generated!</p>
@@ -42,7 +41,7 @@ function Edit({ classes, groups, slots, courses, teachers }) {
                     <Groups groups={groups} courses={courses} slots={slots} />
                 </Route>
                 <Route path="/edit/teachers">
-                    <Teachers teachers={teachers} slots={slots} />
+                    <Teachers teachers={teachers} setTeachers={setTeachers} slots={slots} />
                 </Route>
                 <Route path="/edit/courses">
                     <Courses courses={courses} slots={slots} />

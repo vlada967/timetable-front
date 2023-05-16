@@ -88,7 +88,7 @@ function Login({ onLogin }) {
                     </div>
 
                 </div>
-                <button className="" className={isActive ? "login__submit login__active" : "login__submit"} disabled={isActive ? false : true}>Sign In</button>
+                <button className="" className={isActive ? "login__submit login__active" : "login__submit"} disabled={isActive ? false : false}>Sign In</button>
             </form>
         </div>
     );

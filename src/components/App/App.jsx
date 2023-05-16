@@ -160,7 +160,7 @@ function App() {
   function getCourses() {
     return api.getCourses()
       .then((data) => {
-        console.log('courses', data)
+        // console.log('courses', data)
         setCourses(data);
       })
       .catch(err => console.log(err));
@@ -178,6 +178,7 @@ function App() {
           slots={slots}
           courses={courses}
           teachers={teachers}
+          setTeachers={setTeachers}
           component={Edit}
         />
 

@@ -136,7 +136,7 @@ export const addClass = (name, capacity, tools, slots) => {
         .then((response) => _checkResponse(response))
 };
 
-export const addTeacher = (name, courses, slots) => {
+export const addTeacher = (name, slots) => {
     return fetch(`${BASE_URL}/teachers`, {
         method: 'POST',
         headers: {
@@ -145,9 +145,34 @@ export const addTeacher = (name, courses, slots) => {
         },
         body: JSON.stringify({
             name: name,
-            courses: courses,
             slots: slots
         })
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const editTeacher = (id, name, slots) => {
+    return fetch(`${BASE_URL}/teachers/${id}`, {
+        method: 'PATCH',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            slots: slots
+        })
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const deleteTeacher = (id) => {
+    return fetch(`${BASE_URL}/teachers/${id}`, {
+        method: 'DELETE',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
     })
         .then((response) => _checkResponse(response))
 };
