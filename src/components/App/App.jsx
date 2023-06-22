@@ -24,11 +24,11 @@ function App() {
   const [courses, setCourses] = React.useState([]);
   const [users, setUsers] = React.useState([]);
   const [theClass, setTheClass] = React.useState({});
-  const [theClassId, setTheClassId] = React.useState();
+  const theClassId = React.useRef();
   const [theGroup, setTheGroup] = React.useState({});
-  const [theGroupId, setTheGroupId] = React.useState();
+  const theGroupId = React.useRef();
   const [theTeacher, setTheTeacher] = React.useState({});
-  const [theTeacherId, setTheTeacherId] = React.useState();
+  const theTeacherId = React.useRef();
   const [teacherName, setTeacherName] = React.useState();
   const [groupName, setGroupName] = React.useState();
   const [className, setClassName] = React.useState();
@@ -46,7 +46,23 @@ function App() {
   }, []);
 
   useEffect(() => {
-
+    const ws = new WebSocket('ws://127.0.0.1:8080/api/v1/socket')
+    console.log('Subscribed!')
+    ws.onmessage = async ()=>{
+      console.log(`Got message, refreshing all shit`)
+      console.log(`Fucking ids are: ${theTeacherId.current}, ${theGroupId.current}, ${theClassId.current}`)
+      const tid = theTeacherId.current
+      const gid = theGroupId.current
+      const cid = theClassId.current
+      if(tid)setTheTeacher(await api.getTeacher(tid))
+      if(gid)setTheGroup(await api.getGroup(gid))
+      if(cid)setTheClass(await api.getClass(cid))
+      console.log('Your shit is fresh now, go fuck yourself!')
+    }
+    return ()=>{
+      ws.close()
+      console.log('Unsubscribed!')
+    }
   }, [])
 
   useEffect(() => {
@@ -55,19 +71,19 @@ function App() {
 
   useEffect(() => {
     if (theClass.length === 7) {
-      history.push(`/classes/${theClassId}`);
+      history.push(`/classes/${theClassId.current}`);
     }
   }, [theClass]);
 
   useEffect(() => {
     if (theGroup.length === 7) {
-      history.push(`/groups/${theGroupId}`);
+      history.push(`/groups/${theGroupId.current}`);
     }
   }, [theGroup]);
 
   useEffect(() => {
     if (theTeacher.length === 7) {
-      history.push(`/teachers/${theTeacherId}`);
+      history.push(`/teachers/${theTeacherId.current}`);
     }
   }, [theTeacher]);
 
@@ -100,7 +116,7 @@ function App() {
         setClassName(g.name);
         api.getTheClass(e.target.id)
           .then((data) => {
-            setTheClassId(e.target.id);
+            theClassId.current = e.target.id;
             setTheClass(data);
           })
           .catch(err => console.log(err))
@@ -114,7 +130,7 @@ function App() {
         setGroupName(g.name);
         api.getGroup(e.target.id)
           .then((data) => {
-            setTheGroupId(e.target.id);
+            theGroupId.current = e.target.id;
             setTheGroup(data);
           })
           .catch(err => console.log(err))
@@ -128,8 +144,7 @@ function App() {
         setTeacherName(g.name);
         api.getTeacher(e.target.id)
           .then((data) => {
-            setTheTeacherId(e.target.id);
-
+            theTeacherId.current = e.target.id;
             setTheTeacher(data);
           })
           .catch(err => console.log(err))

@@ -98,6 +98,7 @@ function EditCellPopup({ isOpen, onClose, row, column, courses, groups, rooms, t
         arrId.push(Number(e.target.id));
         setGroupId(arrId);
         setGroup(!group);
+        console.log(`FUCKING FUCK! ${groupId}`)
     }
 
     function handleTeachersChange(e) {

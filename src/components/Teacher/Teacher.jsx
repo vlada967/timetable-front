@@ -15,7 +15,7 @@ function Teacher({ theTeacher, teacherName, courses, groups, rooms, teachers, sl
 
     function onMessage(evt) {
         console.log('message')
-        alert(evt.data);
+        // alert(evt.data);
         return evt.data;
     }
 

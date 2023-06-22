@@ -41,3 +41,12 @@
 .edit__opened {
     display: flex;
 }
+
+.coolul{
+    margin-top: 5vh;
+}
+
+.cooltext{
+    font-size: 3vh;
+    font-family: 'Comic Sans MS';
+}

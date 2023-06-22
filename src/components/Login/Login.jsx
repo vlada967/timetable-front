@@ -46,9 +46,6 @@ function Login({ onLogin }) {
         if (!email) {
             setEmailWrong(true);
             setEmailError('Введите логин');
-        } else if (!re.test(String(email).toLowerCase())) {
-            setEmailWrong(true);
-            setEmailError('Некорректный email');
         } else {
             setEmailWrong(false);
             setEmailError('');
@@ -59,9 +56,6 @@ function Login({ onLogin }) {
         if (!password) {
             setPasswordWrong(true);
             setPasswordError('Введите пароль');
-        } else if (password.length < 8) {
-            setPasswordWrong(true);
-            setPasswordError('Пароль не может быть короче 8 символов');
         } else {
             setPasswordWrong(false);
             setPasswordError('');

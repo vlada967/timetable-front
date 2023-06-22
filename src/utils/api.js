@@ -355,3 +355,14 @@ export const checkAdmin = () => {
     })
         .then((res) => (res.status))
 };
+
+export const getProblems = async () => {
+    return await (await fetch(`${BASE_URL}/table/problems`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })).json()
+        
+};
