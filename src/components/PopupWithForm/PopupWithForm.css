@@ -99,6 +99,19 @@
     border-bottom: 1px solid #000000;
 }
 
+.popup__text-pink {
+    margin: 0px auto 0;
+    padding: 0;
+    border: none;
+    width: 83%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    min-height: 30px;
+    background: #f7b0f7;
+    border-bottom: 1px solid #f7b0f7;
+  }
+
 ::placeholder {
     color: #000000;
 }

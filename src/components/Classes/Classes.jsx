@@ -5,7 +5,7 @@ import trashPath from '../../images/trash.svg';
 import AddPopup from '../AddPopup/AddPopup';
 import EditPopup from '../EditPopup/EditPopup';
 
-function Classes({ classes, slots }) {
+function Classes({ classes, setClasses, slots }) {
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState(false);
     const [isEditPopupOpen, setIsEditPopupOpen] = React.useState(false);
     const [theClass, setTheClass] = React.useState([]);
@@ -88,13 +88,13 @@ function Classes({ classes, slots }) {
     }
 
     function handleDeleteClass(e) {
-        // api.deleteClass(e.target.id)
-        //     .then(() => {
-        //         setClasses((state) => state.filter(c => c.id !== e.target.id));
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
+        api.deleteClass(e.target.id)
+            .then(() => {
+                setClasses((state) => state.filter(c => c.id !== e.target.id));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     return (

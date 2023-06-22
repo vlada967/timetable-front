@@ -122,7 +122,7 @@ function Teachers({ teachers, setTeachers, slots }) {
                         <tr className="classes__row">
                             <th className="classes__cell">Name</th>
                             {/* <th className="classes__cell">Quantity</th> */}
-                            <th className="classes__cell">Courses</th>
+                            {/* <th className="classes__cell">Courses</th> */}
                             <th className="classes__cell">Available time</th>
                         </tr>
 
@@ -132,7 +132,7 @@ function Teachers({ teachers, setTeachers, slots }) {
                                 <tr className="classes__row">
                                     <td className="classes__cell">{item.name}</td>
                                     {/* <td className="classes__cell">{item.quantity}</td> */}
-                                    <td className="classes__cell">{item.courses.map(id => getCourse(id))}</td>
+                                    {/* <td className="classes__cell">{item.courses.map(id => getCourse(id))}</td> */}
                                     <td className="classes__cell">{item.availableSlots.map((slotId) => {
                                         let slot = slots.find(slot => slot.id === slotId)
                                         return (

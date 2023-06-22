@@ -6,6 +6,8 @@ function EditTeacherPopup({ isOpen, onClose, theTeacher, isChecked, availableSlo
     const [name, setName] = React.useState('');
     const [slotNumbers, setSlotNumbers] = React.useState([]);
     const [slots, setSlots] = React.useState([]);
+    const [courses, setCourses] = React.useState([]);
+    let testCourses = [false, false, false, false];
     let arr = [false, false, false, false, false, false, false, false,
         false, false, false, false, false, false, false,
         false, false, false, false, false, false, false,
@@ -28,6 +30,12 @@ function EditTeacherPopup({ isOpen, onClose, theTeacher, isChecked, availableSlo
 
     function handleNameChange(e) {
         setName(e.target.value);
+    }
+
+    function handleCoursesChange(e) {
+        const id = parseInt(e.target.id, 10);
+        testCourses[id] = !courses[id];
+        setCourses(testCourses);
     }
 
     function handleSlotsChange(e) {
@@ -69,6 +77,48 @@ function EditTeacherPopup({ isOpen, onClose, theTeacher, isChecked, availableSlo
                 className="popup__text popup__text_type_title"
                 required />
             <span className="title-input-error popup__error"></span>
+
+            {/* <div className="checkbox-cont">
+                <p className="input__subtitle">Courses:</p>
+                <label className="container input-check">
+                    <p className="input__subtitle-checkbox">PAC</p>
+                    <input
+                        className="popup__table-check"
+                        type="checkbox"
+                        id="0"
+                        value={courses[0]}
+                        checked={courses[0]}
+                        onChange={handleCoursesChange}
+                    />
+                    <span className="checkmark"></span>
+                </label>
+
+                <label className="container input-check popup_add-teacher">
+                    <p className="input__subtitle-checkbox ">Java</p>
+                    <input
+                        className="popup__table-check "
+                        type="checkbox"
+                        id="1"
+                        value={courses[1]}
+                        checked={courses[1]}
+                        onChange={handleCoursesChange}
+                    />
+                    <span className="checkmark"></span>
+                </label>
+
+                <label className="container input-check popup_add-teacher">
+                    <p className="input__subtitle-checkbox ">OS</p>
+                    <input
+                        className="popup__table-check "
+                        type="checkbox"
+                        id="2"
+                        value={courses[2]}
+                        checked={courses[2]}
+                        onChange={handleCoursesChange}
+                    />
+                    <span className="checkmark"></span>
+                </label>
+            </div> */}
 
             <p className="popup__table-text">Choose time when the teacher is available:</p>
             <table className="popup__table">

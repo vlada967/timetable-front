@@ -22,6 +22,7 @@ function App() {
   const [teachers, setTeachers] = React.useState([]);
   const [slots, setSlots] = React.useState([]);
   const [courses, setCourses] = React.useState([]);
+  const [users, setUsers] = React.useState([]);
   const [theClass, setTheClass] = React.useState({});
   const [theClassId, setTheClassId] = React.useState();
   const [theGroup, setTheGroup] = React.useState({});
@@ -31,6 +32,7 @@ function App() {
   const [teacherName, setTeacherName] = React.useState();
   const [groupName, setGroupName] = React.useState();
   const [className, setClassName] = React.useState();
+  const [isAdmin, setIsAdmin] = React.useState();
   const history = useHistory();
 
   useEffect(() => {
@@ -40,7 +42,16 @@ function App() {
     getTeachers();
     getSlots();
     getCourses();
+    getUsers();
   }, []);
+
+  useEffect(() => {
+
+  }, [])
+
+  useEffect(() => {
+    checkAdmin();
+  }, [loggedIn]);
 
   useEffect(() => {
     if (theClass.length === 7) {
@@ -118,6 +129,7 @@ function App() {
         api.getTeacher(e.target.id)
           .then((data) => {
             setTheTeacherId(e.target.id);
+
             setTheTeacher(data);
           })
           .catch(err => console.log(err))
@@ -160,14 +172,35 @@ function App() {
   function getCourses() {
     return api.getCourses()
       .then((data) => {
-        // console.log('courses', data)
+        // console.log('courses in app', data)
         setCourses(data);
+      })
+      .catch(err => console.log(err));
+  }
+
+  function getUsers() {
+    return api.getUsers()
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch(err => console.log(err));
+  }
+
+  function checkAdmin() {
+    return api.checkAdmin()
+      .then((res) => {
+        if (res == 200) {
+          setIsAdmin(true);
+        }
       })
       .catch(err => console.log(err));
   }
 
   return (
     <>
+      {/* <button onClick={() => { setCount((prev) => ++prev) }}>changed count {count}</button> */}
+
+
       <Header />
       <Switch>
         <ProtectedRoute
@@ -179,6 +212,12 @@ function App() {
           courses={courses}
           teachers={teachers}
           setTeachers={setTeachers}
+          setCourses={setCourses}
+          setGroups={setGroups}
+          setClasses={setClasses}
+          users={users}
+          setUsers={setUsers}
+          isAdmin={isAdmin}
           component={Edit}
         />
 
@@ -191,15 +230,15 @@ function App() {
         <Route path="/view">
           <View />
         </Route>
-        <Class path="/classes/:id" theClass={theClass} className={className}></Class>
+        <Class path="/classes/:id" theClass={theClass} className={className} courses={courses} groups={groups} rooms={classes} teachers={teachers} slots={slots}></Class>
         <Route exact path="/classes">
           <ViewClasses classes={classes} onClick={handleClassClick} />
         </Route>
-        <Group path="/groups/:id" theGroup={theGroup} groupName={groupName}></Group>
+        <Group path="/groups/:id" theGroup={theGroup} groupName={groupName} courses={courses} groups={groups} rooms={classes} teachers={teachers} slots={slots}></Group>
         <Route exact path="/groups">
           <ViewGroupes groups={groups} onClick={handleGroupClick} />
         </Route>
-        <Teacher path="/teachers/:id" theTeacher={theTeacher} teacherName={teacherName} ></Teacher>
+        <Teacher path="/teachers/:id" theTeacher={theTeacher} teacherName={teacherName} courses={courses} groups={groups} rooms={classes} teachers={teachers} slots={slots} ></Teacher>
         <Route exact path="/teachers">
           <ViewTeachers teachers={teachers} onClick={handleTeacherClick} />
         </Route>

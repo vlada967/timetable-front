@@ -74,7 +74,7 @@ function AddTeacherPopup({ isOpen, onClose }) {
                 required />
             <span className="title-input-error popup__error"></span>
 
-            <div className="checkbox-cont">
+            {/* <div className="checkbox-cont">
                 <p className="input__subtitle">Courses:</p>
                 <label className="container input-check">
                     <p className="input__subtitle-checkbox">PAC</p>
@@ -114,7 +114,7 @@ function AddTeacherPopup({ isOpen, onClose }) {
                     />
                     <span className="checkmark"></span>
                 </label>
-            </div>
+            </div> */}
 
             <p className="popup__table-text">Choose time when the teacher is available:</p>
             <table className="popup__table">

@@ -5,7 +5,11 @@ import * as api from '../../utils/api.js';
 function AddGroupPopup({ isOpen, onClose, onAddPlace }) {
     const [name, setName] = React.useState('');
     const [capacity, setCapacity] = React.useState('');
-    const [tools, setTools] = React.useState(false);
+    const [courses, setCourses] = React.useState([]);
+    const [coursesId, setCoursesId] = React.useState([]);
+    let testCourses = [false, false, false, false];
+    // let testCourses = [];
+    // console.log('testCourses', testCourses)
     let slots = [];
 
     function handleNameChange(e) {
@@ -16,8 +20,10 @@ function AddGroupPopup({ isOpen, onClose, onAddPlace }) {
         setCapacity(e.target.value);
     }
 
-    function handleToolsChange(e) {
-        setTools(e.target.checked);
+    function arrayRemove(arr, value) {
+        return arr.filter(function (el) {
+            return el != value;
+        });
     }
 
     function arrayRemove(arr, value) {
@@ -35,20 +41,38 @@ function AddGroupPopup({ isOpen, onClose, onAddPlace }) {
         }
     }
 
+    function handleCoursesChange(e) {
+        testCourses = courses;
+
+        // console.log('testCourses', testCourses)
+        // console.log('courses', courses)
+
+        const id = parseInt(e.target.id, 10);
+
+        if (coursesId.includes(id)) {
+            setCoursesId(arrayRemove(coursesId, id));
+        } else {
+            setCoursesId([...coursesId, id]);
+        }
+
+        testCourses[id] = !courses[id];
+        setCourses(testCourses);
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(name, capacity, tools, slots)
-        api.addClass(name, capacity, tools, slots)
+
+        api.addGroup(name, capacity, slots, coursesId)
             .then((data) => {
                 console.log(data)
             })
             .catch(err => console.log(err));
         setName('');
         setCapacity('');
-        setTools(false);
         slots = [];
         e.target.closest('form').reset();
         onClose();
+        window.location.reload();
     }
 
     return (
@@ -57,7 +81,7 @@ function AddGroupPopup({ isOpen, onClose, onAddPlace }) {
                 value={name || ''}
                 onChange={handleNameChange}
                 type="text"
-                placeholder="Number"
+                placeholder="Name"
                 className="popup__text popup__text_type_title"
                 required />
             <span className="title-input-error popup__error"></span>
@@ -70,12 +94,47 @@ function AddGroupPopup({ isOpen, onClose, onAddPlace }) {
                 required />
             <span className="url-input-error popup__error"></span>
 
-            <label for="courses" className="popup__courses-title">Choose a course:</label>
-            <select id="courses" name="courses" className="popup__courses">
-                <option value="os">OS</option>
-                <option value="jaba">Jaba</option>
-                <option value="pac">PAC</option>
-            </select>
+            <div className="checkbox-cont">
+                <p className="input__subtitle">Courses:</p>
+                <label className="container input-check">
+                    <p className="input__subtitle-checkbox">PAC</p>
+                    <input
+                        className="popup__table-check"
+                        type="checkbox"
+                        id="1"
+                        value={courses[1]}
+                        checked={courses[1]}
+                        onChange={handleCoursesChange}
+                    />
+                    <span className="checkmark"></span>
+                </label>
+
+                <label className="container input-check popup_add-teacher">
+                    <p className="input__subtitle-checkbox ">Java</p>
+                    <input
+                        className="popup__table-check "
+                        type="checkbox"
+                        id="2"
+                        value={courses[2]}
+                        checked={courses[2]}
+                        onChange={handleCoursesChange}
+                    />
+                    <span className="checkmark"></span>
+                </label>
+
+                <label className="container input-check popup_add-teacher">
+                    <p className="input__subtitle-checkbox ">OS</p>
+                    <input
+                        className="popup__table-check "
+                        type="checkbox"
+                        id="3"
+                        value={courses[3]}
+                        checked={courses[3]}
+                        onChange={handleCoursesChange}
+                    />
+                    <span className="checkmark"></span>
+                </label>
+            </div>
 
             <p className="popup__table-text">Choose time when the group is available:</p>
             <table className="popup__table">

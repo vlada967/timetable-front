@@ -53,6 +53,34 @@ export const getGroup = (id) => {
         .then((response) => _checkResponse(response))
 };
 
+export const addGroup = (name, quantity, slots, courses) => {
+    return fetch(`${BASE_URL}/groups`, {
+        method: 'POST',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            quantity: quantity,
+            slots: slots,
+            courses: courses
+        })
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const deleteGroup = (id) => {
+    return fetch(`${BASE_URL}/groups/${id}`, {
+        method: 'DELETE',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => _checkResponse(response))
+};
+
 export const getTeachers = () => {
     return fetch(`${BASE_URL}/teachers`, {
         method: 'GET',
@@ -111,6 +139,62 @@ export const getSlots = () => {
 export const getCourses = () => {
     return fetch(`${BASE_URL}/courses`, {
         method: 'GET',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const getCourse = (id) => {
+    return fetch(`${BASE_URL}/courses/${id}`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const addCourse = (name, tools, frequency, teacher) => {
+    return fetch(`${BASE_URL}/courses`, {
+        method: 'POST',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            tools: tools,
+            frequency: frequency,
+            teacher: teacher
+        })
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const editCourse = (id, name, tools, frequency, teacher) => {
+    return fetch(`${BASE_URL}/courses/${id}`, {
+        method: 'PATCH',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            tools: tools,
+            frequency: frequency,
+            teacher: teacher
+        })
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const deleteCourse = (id) => {
+    return fetch(`${BASE_URL}/courses/${id}`, {
+        method: 'DELETE',
         headers: {
             authorization: `Bearer ${token()}`,
             'Content-Type': 'application/json'
@@ -205,3 +289,69 @@ export const deleteClass = (id) => {
         .then((response) => _checkResponse(response))
 };
 
+export const editCell = (slot, room, groups, teacher, course) => {
+    return fetch(`${BASE_URL}/table/entries`, {
+        method: 'POST',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            slot: slot,
+            room: room,
+            groups: groups,
+            teacher: teacher,
+            course: course
+        })
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const getUsers = () => {
+    return fetch(`${BASE_URL}/users`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const addUser = (username, name, password) => {
+    return fetch(`${BASE_URL}/register`, {
+        method: 'POST',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: username,
+            name: name,
+            password: password
+        })
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const deleteUser = (username) => {
+    return fetch(`${BASE_URL}/users/${username}`, {
+        method: 'DELETE',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((response) => _checkResponse(response))
+};
+
+export const checkAdmin = () => {
+    return fetch(`${BASE_URL}/roletest/admin`, {
+        method: 'GET',
+        headers: {
+            authorization: `Bearer ${token()}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((res) => (res.status))
+};

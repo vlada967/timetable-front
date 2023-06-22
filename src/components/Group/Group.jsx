@@ -1,7 +1,25 @@
-function Group({ theGroup, groupName }) {
+import React from 'react';
+import EditCellPopup from '../EditCellPopup/EditCellPopup';
+
+function Group({ theGroup, groupName, courses, groups, rooms, teachers, slots }) {
+    const [isEditCellPopupOpen, setIsEditCellPopupOpen] = React.useState(false);
+    const [row, setRow] = React.useState(0);
+    const [column, setColumn] = React.useState(0);
+    let names = [];
+
+    const handleCellClick = (row, column) => {
+        setRow(row);
+        setColumn(column);
+        setIsEditCellPopupOpen(true);
+    };
+
+    function closePopup() {
+        setIsEditCellPopupOpen(false);
+    }
+
     return (
         <section className="class">
-            <h3 className="class_title">Расписание группы {groupName}</h3>
+            <h3 className="class_title">Timetable of the group {groupName}</h3>
             <table className="table">
                 <tbody>
                     <tr className="table-row">
@@ -18,11 +36,11 @@ function Group({ theGroup, groupName }) {
                     <tr className="table-row">
                         <th className="table-head">9:00</th>
 
-                        {theGroup[0].map((item) => {
+                        {theGroup[0].map((item, column) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
+                                return <td key={column} onClick={() => handleCellClick(0, column)} className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
                             } else {
-                                return <td className="table-cell"></td>
+                                return <td key={column} onClick={() => handleCellClick(0, column)} className="table-cell"></td>
                             }
                         })}
                     </tr>
@@ -30,11 +48,11 @@ function Group({ theGroup, groupName }) {
                     <tr className="table-row">
                         <th className="table-head">10:50</th>
 
-                        {theGroup[1].map((item) => {
+                        {theGroup[1].map((item, column) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
+                                return <td key={column} onClick={() => handleCellClick(1, column)} className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
                             } else {
-                                return <td className="table-cell"></td>
+                                return <td key={column} onClick={() => handleCellClick(1, column)} className="table-cell"></td>
                             }
                         })}
                     </tr>
@@ -42,11 +60,11 @@ function Group({ theGroup, groupName }) {
                     <tr className="table-row">
                         <th className="table-head">12:40</th>
 
-                        {theGroup[2].map((item) => {
+                        {theGroup[2].map((item, column) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
+                                return <td key={column} onClick={() => handleCellClick(2, column)} className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
                             } else {
-                                return <td className="table-cell"></td>
+                                return <td key={column} onClick={() => handleCellClick(2, column)} className="table-cell"></td>
                             }
                         })}
                     </tr>
@@ -54,11 +72,11 @@ function Group({ theGroup, groupName }) {
                     <tr className="table-row">
                         <th className="table-head">14:30</th>
 
-                        {theGroup[3].map((item) => {
+                        {theGroup[3].map((item, column) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
+                                return <td key={column} onClick={() => handleCellClick(3, column)} className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
                             } else {
-                                return <td className="table-cell"></td>
+                                return <td key={column} onClick={() => handleCellClick(3, column)} className="table-cell"></td>
                             }
                         })}
                     </tr>
@@ -66,11 +84,11 @@ function Group({ theGroup, groupName }) {
                     <tr className="table-row">
                         <th className="table-head">16:20</th>
 
-                        {theGroup[4].map((item) => {
+                        {theGroup[4].map((item, column) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
+                                return <td key={column} onClick={() => handleCellClick(4, column)} className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
                             } else {
-                                return <td className="table-cell"></td>
+                                return <td key={column} onClick={() => handleCellClick(4, column)} className="table-cell"></td>
                             }
                         })}
                     </tr>
@@ -78,11 +96,11 @@ function Group({ theGroup, groupName }) {
                     <tr className="table-row">
                         <th className="table-head">18:10</th>
 
-                        {theGroup[5].map((item) => {
+                        {theGroup[5].map((item, column) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
+                                return <td key={column} onClick={() => handleCellClick(5, column)} className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
                             } else {
-                                return <td className="table-cell"></td>
+                                return <td key={column} onClick={() => handleCellClick(5, column)} className="table-cell"></td>
                             }
                         })}
                     </tr>
@@ -90,16 +108,18 @@ function Group({ theGroup, groupName }) {
                     <tr className="table-row">
                         <th className="table-head">20:00</th>
 
-                        {theGroup[6].map((item) => {
+                        {theGroup[6].map((item, column) => {
                             if (item) {
-                                return <td className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
+                                return <td key={column} onClick={() => handleCellClick(6, column)} className="table-cell">{item.course.name} <br></br> {item.teacher.name} <br></br>  {item.room.name}</td>
                             } else {
-                                return <td className="table-cell"></td>
+                                return <td key={column} onClick={() => handleCellClick(6, column)} className="table-cell"></td>
                             }
                         })}
                     </tr>
                 </tbody>
             </table>
+
+            <EditCellPopup isOpen={isEditCellPopupOpen} onClose={closePopup} row={row} column={column} courses={courses} groups={groups} rooms={rooms} teachers={teachers} slots={slots}></EditCellPopup>
         </section>
     )
 }

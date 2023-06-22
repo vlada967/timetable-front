@@ -3,12 +3,18 @@ import * as api from '../../utils/api.js';
 import editPath from '../../images/edit.svg';
 import trashPath from '../../images/trash.svg';
 import AddGroupPopup from '../AddGroupPopup/AddGroupPopup';
-import EditPopup from '../EditPopup/EditPopup';
+// import EditGroupPopup from '../EditGroupPopup/EditGroupPopup';
 
-function Groups({ groups, courses, slots }) {
+function Groups({ groups, courses, slots, setGroups }) {
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState(false);
     const [isEditPopupOpen, setIsEditPopupOpen] = React.useState(false);
     const [theClass, setTheClass] = React.useState([]);
+    const [theCourse, setTheCourse] = React.useState("");
+    // const [courses, setCourses] = React.useState([]);
+    // const [id, setId] = React.useState(0);
+    let testCourses = [];
+    let test = [];
+    // const [test, setTest] = React.useState([]);
     const [availableSlots, setAvailableSlots] = React.useState([]);
     const [isChecked, setIsChecked] = React.useState([false, false, false, false, false, false, false,
         false, false, false, false, false, false, false,
@@ -19,6 +25,17 @@ function Groups({ groups, courses, slots }) {
         false, false, false, false, false, false, false]);
     let checked = [];
     let available = [];
+
+    // useEffect(() => {
+    //     groups.map((group) => {
+    //         group.courses.map(id => test.push(getCourses(id)));
+
+    //     });
+    // }, []);
+
+
+    console.log('COURSES', courses)
+
 
     function getDay(id) {
         switch (id) {
@@ -58,16 +75,22 @@ function Groups({ groups, courses, slots }) {
         }
     }
 
-    function getCourse(id) {
-        switch (id) {
-            case 124:
-                return "OS ";
-            case 126:
-                return "Java ";
-            case 132:
-                return "PAC ";
-        }
-    }
+    // function getCourses(id) {
+    //     api.getCourse(id)
+    //         .then((course) => {
+    //             console.log('New course', course.name);
+    //             testCourses = courses;
+    //             testCourses.push(course.name);
+    //             // setCourses(testCourses);
+    //             // setCourses(...courses, course.name);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         })
+    //     // .finally(() => {
+    //     //     return testCourses;
+    //     // })
+    // }
 
     function closePopup() {
         setIsAddPopupOpen(false);
@@ -99,13 +122,16 @@ function Groups({ groups, courses, slots }) {
     }
 
     function handleDeleteGroup(e) {
-        // api.deleteGroup(e.target.id)
-        //     .then(() => {
-        //         setClasses((state) => state.filter(c => c.id !== e.target.id));
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
+        api.deleteGroup(e.target.id)
+            .then(() => {
+                setGroups((state) => state.filter(c => c.id !== e.target.id));
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            .finally(() => {
+                window.location.reload();
+            })
     }
 
     return (
@@ -119,19 +145,23 @@ function Groups({ groups, courses, slots }) {
                 <table className="classes__table">
                     <tbody className="classes__table-body">
                         <tr className="classes__row">
-                            <th className="classes__cell">Number</th>
+                            <th className="classes__cell">Name</th>
                             <th className="classes__cell">Quantity</th>
                             <th className="classes__cell">Courses</th>
                             <th className="classes__cell">Available time</th>
                         </tr>
 
                         {groups.map((item) => {
+                            // item.courses.map(id => getCourses(id));
+
                             console.log('group', item)
+                            console.log('test    !!!', test)
                             return (
                                 <tr className="classes__row">
                                     <td className="classes__cell">{item.name}</td>
                                     <td className="classes__cell">{item.quantity}</td>
-                                    <td className="classes__cell">{item.courses.map(id => getCourse(id))}</td>
+                                    {/* <td className="classes__cell">{item.courses.map(id => getCourse(id))}</td> */}
+                                    <td className="classes__cell">{courses.map(c => c.name)}</td>
                                     <td className="classes__cell">{item.availableSlots.map((slotId) => {
                                         let slot = slots.find(slot => slot.id === slotId)
                                         return (
@@ -152,7 +182,7 @@ function Groups({ groups, courses, slots }) {
             </div>
 
             <AddGroupPopup isOpen={isAddPopupOpen} onClose={closePopup} slots={slots}></AddGroupPopup>
-            <EditPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass} isChecked={isChecked} availableSlots={availableSlots}></EditPopup>
+            {/* <EditGroupPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass} isChecked={isChecked} availableSlots={availableSlots}></EditGroupPopup> */}
         </section>
     );
 }

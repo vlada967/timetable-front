@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import * as api from '../../utils/api.js';
 import editPath from '../../images/edit.svg';
 import trashPath from '../../images/trash.svg';
-import AddGroupPopup from '../AddGroupPopup/AddGroupPopup';
-import EditPopup from '../EditPopup/EditPopup';
+import AddCoursePopup from '../AddCoursePopup/AddCoursePopup';
+import EditCoursePopup from '../EditCoursePopup/EditCoursePopup';
 
-function Courses({ courses, slots }) {
+function Courses({ courses, setCourses, slots }) {
     const [isAddPopupOpen, setIsAddPopupOpen] = React.useState(false);
     const [isEditPopupOpen, setIsEditPopupOpen] = React.useState(false);
-    const [theClass, setTheClass] = React.useState([]);
+    const [theCourse, setTheCourse] = React.useState([]);
     const [availableSlots, setAvailableSlots] = React.useState([]);
     const [isChecked, setIsChecked] = React.useState([false, false, false, false, false, false, false,
         false, false, false, false, false, false, false,
@@ -20,81 +20,24 @@ function Courses({ courses, slots }) {
     let checked = [];
     let available = [];
 
-    function getDay(id) {
-        switch (id) {
-            case 0:
-                return "Mon";
-            case 1:
-                return "Tue";
-            case 2:
-                return "Wed";
-            case 3:
-                return "Thu";
-            case 4:
-                return "Fri";
-            case 5:
-                return "Sat";
-            case 6:
-                return "Sun";
-        }
-    }
-
-    function getTime(time) {
-        switch (time) {
-            case 540:
-                return "9:00";
-            case 650:
-                return "10:50";
-            case 760:
-                return "12:40";
-            case 870:
-                return "14:30";
-            case 980:
-                return "16:20";
-            case 1090:
-                return "18:10";
-            case 1200:
-                return "20:00";
-        }
-    }
-
-    function getCourse(id) {
-        switch (id) {
-            case 52:
-                return "Law ";
-            case 53:
-                return "History ";
-            case 3:
-                return "PAC ";
-        }
-    }
-
     function getTeacher(id) {
-        switch (id) {
-            case 31:
-                return "Ivanov ";
-            case 32:
-                return "Gatilov ";
-            case 33:
-                return "Sidorov ";
-        }
+        api.getTeacher(id)
+            .then((data) => {
+                console.log('Teacher', data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     function getGroup(id) {
-        switch (id) {
-            case 71:
-                return "20201 ";
-            case 72:
-                return "20202 ";
-            case 73:
-                return "20203 ";
-            case 75:
-                return "20204 ";
-            case 76:
-                return "20205 ";
-            case 77:
-                return "20206 ";
-        }
+        api.getGroup(id)
+            .then((data) => {
+                console.log('Group', data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     function closePopup() {
@@ -106,34 +49,25 @@ function Courses({ courses, slots }) {
         setIsAddPopupOpen(true);
     }
 
-    function handleEditGroup(e) {
+    function handleEditCourse(e) {
         courses.forEach(c => {
             if (c.id.toString() === e.target.id) {
-                setTheClass(c);
-                available = c.availableSlots;
-                setAvailableSlots(available);
+                setTheCourse(c);
             }
         });
 
-        for (let i = 1; i <= 49; i++) {
-            if (available.includes(i)) {
-                checked[i] = true;
-            } else {
-                checked[i] = false;
-            }
-        }
         setIsChecked(checked);
         setIsEditPopupOpen(true);
     }
 
-    function handleDeleteGroup(e) {
-        // api.deleteGroup(e.target.id)
-        //     .then(() => {
-        //         setClasses((state) => state.filter(c => c.id !== e.target.id));
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     });
+    function handleDeleteCourse(e) {
+        api.deleteCourse(e.target.id)
+            .then(() => {
+                setCourses((state) => state.filter(c => c.id !== e.target.id));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     return (
@@ -148,6 +82,8 @@ function Courses({ courses, slots }) {
                     <tbody className="classes__table-body">
                         <tr className="classes__row">
                             <th className="classes__cell">Name</th>
+                            <th className="classes__cell">Tools</th>
+                            <th className="classes__cell">Frequency</th>
                             <th className="classes__cell">Teacher</th>
                             <th className="classes__cell">Groups</th>
                         </tr>
@@ -157,6 +93,8 @@ function Courses({ courses, slots }) {
                             return (
                                 <tr className="classes__row">
                                     <td className="classes__cell">{item.name}</td>
+                                    <td className="classes__cell">{item.tools ? "Has" : "No"}</td>
+                                    <td className="classes__cell">{item.frequency}</td>
                                     <td className="classes__cell">{getTeacher(item.teacher)}</td>
                                     <td className="classes__cell">{item.groups.map(id => getGroup(id))}</td>
                                     {/* <td className="classes__cell">{item.availableSlots.map((slotId) => {
@@ -168,8 +106,8 @@ function Courses({ courses, slots }) {
                                             </tr>
                                         )
                                     })}</td> */}
-                                    <img src={editPath} alt="pencil" className="classes__img" id={item.id} onClick={handleEditGroup} />
-                                    <img src={trashPath} alt="trash" className="classes__img" id={item.id} onClick={handleDeleteGroup} />
+                                    <img src={editPath} alt="pencil" className="classes__img" id={item.id} onClick={handleEditCourse} />
+                                    <img src={trashPath} alt="trash" className="classes__img" id={item.id} onClick={handleDeleteCourse} />
                                 </tr>
                             )
                         })}
@@ -178,8 +116,8 @@ function Courses({ courses, slots }) {
                 </table>
             </div>
 
-            <AddGroupPopup isOpen={isAddPopupOpen} onClose={closePopup} slots={slots}></AddGroupPopup>
-            <EditPopup isOpen={isEditPopupOpen} onClose={closePopup} theClass={theClass} isChecked={isChecked} availableSlots={availableSlots}></EditPopup>
+            <AddCoursePopup isOpen={isAddPopupOpen} onClose={closePopup} slots={slots}></AddCoursePopup>
+            <EditCoursePopup isOpen={isEditPopupOpen} onClose={closePopup} theCourse={theCourse} isChecked={isChecked} availableSlots={availableSlots}></EditCoursePopup>
         </section>
     );
 }
